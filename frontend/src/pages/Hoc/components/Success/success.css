@@ -1,0 +1,31 @@
+.success-card {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.success-card Button {
+    border-radius: 30px;
+    margin-left: 10px;
+}
+
+.success-card h1 {
+    font-size: 70px;
+    margin: 12px;
+}
+/*Success card*/
+
+.success-card h3 {
+    margin: 10px; 
+}
+
+Button.return {
+    background: white;
+    color: #026667 !important;
+    border: 1px solid #026667 ;
+}
+
+Button.continue {
+    background: #026667;
+    color: white !important;
+    border: none;
+}

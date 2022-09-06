@@ -1,0 +1,98 @@
+/* DialogDemo.css */
+
+.dialog-demo .p-button {
+  margin: 0 0.5rem 0 0;
+  min-width: 10rem;
+}
+
+.dialog-demo p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.dialog-demo .p-dialog .p-button {
+  min-width: 6rem;
+}
+@media screen and (max-width: 960px) {
+  .dialog-demo .p-button {
+    margin: 0 0.2em 0 0;
+    min-width: 3em;
+  }
+}
+/* FormDemo.css */
+
+.form-demo.dangky-form .card,
+.form-demo.dangnhap-form .card{
+  padding: 20px;
+}
+.form-demo.dangky-form .card .p-field {
+  margin-bottom: 50px;
+}
+
+.form-demo .card form {
+  margin-top: 2rem;
+}
+.form-demo .card .p-field {
+  margin-bottom: 1.5rem;
+}
+
+.p-calendar-w-btn-right .p-datepicker-trigger {
+  border: 2px solid #026670 !important
+}
+
+.p-checkbox-box.p-focus {
+  border: 2px solid #026670 !important;
+}
+
+.p-checkbox-box:hover {
+  border: 2px solid #026670 !important;
+}
+
+.form-demo.dangky-form .card,
+.form-demo.dangnhap-form .card {
+  width: 90%;
+  min-width: 0;
+}
+@media screen and (max-width: 640px) {
+
+  .form-demo.dangky-form .card .p-fluid,
+  .form-demo.dangnhap-form .card .p-fluid {
+    width: 100%;
+  }
+  .card-signup .p-button-text.p-button-plain,
+  .card-login .p-button-text.p-button-plain {
+    padding: 5px;
+    font-size: 15px;
+  }
+}
+
+/*Button*/
+.card-signup .p-button-text.p-button-plain {
+  background-color: #026670;
+  color: #fff;
+}
+.card-signup .p-button.p-button-text.p-button-plain:enabled:hover,
+.p-button.p-button-text.p-button-plain:not(button):not(a):not(.p-disabled):hover {
+  background-color: #026670;
+  color: #fce181;
+}
+
+.p-calendar-w-btn-right .p-datepicker-trigger {
+  background-color: #fff;
+}
+button.p-button.p-component.p-datepicker-trigger.p-button-icon-only:hover {
+  background-color: whitesmoke;
+}
+.p-button-icon,
+.p-checkbox-box,
+.p-checkbox-icon {
+  color: #026670;
+}
+.btn-signup {
+  background-color: #026670;
+}
+
+button.p-button.p-component.btn-signup:hover {
+  color: #026670;
+  background-color: #fff;
+}

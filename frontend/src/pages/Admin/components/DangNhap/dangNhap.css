@@ -1,0 +1,51 @@
+.btnforget {
+  background-color: #fff;
+  color: #026670;
+  text-align: center;
+  border-color: #fff;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+#admin .p-field {
+  margin-bottom: 36px;
+}
+
+#admin .p-fluid {
+  width: 100%;
+}
+
+.card-login .p-button.p-button-text.p-button-plain {
+  color: #026670;
+  border-radius: 19px;
+}
+.card-login .p-button.p-button-text.p-button-plain:hover {
+  color: #026670;
+  background-color: #fce181;
+}
+.btn-login {
+  background-color: #026670;
+}
+button.p-button.p-component.btn-login:hover {
+  color: #026670;
+  background-color: #fff;
+}
+
+.admin-dangnhap .card {
+  padding: 0.7rem;
+  width: 70%;
+  margin-bottom: 10rem;
+  margin-top: 10rem;
+}
+
+.toast-demo button {
+    min-width: 10rem;
+    margin-right: .5rem;
+}
+
+@media screen and (max-width: 960px) {
+    .toast-demo button {
+        width: 100%;
+        margin-bottom: .5rem;
+    }
+}

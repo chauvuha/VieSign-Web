@@ -1,0 +1,45 @@
+.support-second-section-text img {
+    width: 60%;
+    margin: 20px 0px 70px 0px;
+    box-shadow: 3px 4px 2px 3px #026670;
+}
+
+.support-second-section Accordion {
+    width: 100%;
+}
+
+.support-second-section {
+    min-height: 400px;
+}
+
+.p-accordion-header.p-highlight,
+.p-accordion-tab.p-accordion-tab-active,
+.p-accordion-tab.p-accordion-header.p-highlight,
+#pr_id_1_header_0,
+.p-accordion-header a {
+    -webkit-box-shadow: none; 
+    box-shadow: none !important;
+    outline: white;
+}
+
+.p-accordion-header a {
+    background-color:#026670 !important;
+    color: white !important;
+}
+
+.p-accordion-header.p-highlight:focus,
+.p-accordion-header:focus,
+.p-accordion-tab:focus {
+    box-shadow: none !important;
+    outline: white;
+    border: 1px solid white !important;
+    border-color: transparent !important; 
+
+}
+
+@media (max-width: 768px) { 
+    .support-second-section-text img {
+        width: 80%;
+        margin: 20px 0px 50px 0px;
+    }
+ }

@@ -1,0 +1,151 @@
+/*Chung ca trang level*/
+.learn-level-page {
+    margin-top: 20px;
+    margin-bottom: 80px;
+    padding: 20px
+}
+  
+/*Thanh bai hoc scroll on the left*/
+Button.scroll-item-level {
+    width: 100% ;
+    height: 100px !important;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #026667;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    border-radius: 56px;
+    font-weight: bold;
+    justify-content: center;
+    font-size: 22px;
+    font-family: 'Mulish', sans-serif;
+    border: 2px solid #026667 !important;
+
+}
+
+Button.scroll-item-level:hover {
+    background: #FCE283 !important;
+    color: #026667 !important;
+    border: 2px solid #026667 !important;
+
+}
+
+Button:focus:not(:focus-visible).scroll-item-level {
+    background: #FCE283;
+    color: #026667;
+    border: 2px solid #FCE283 !important;
+
+}
+
+/*Thanh 5 level on the right*/
+
+
+Button.scroll-item-level-section {
+    width: 100%;
+    height: 120px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    color: #026667;
+    border: 2px solid white !important;
+    margin-top: 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Mulish', sans-serif;
+}
+
+button.scroll-item-level-section.heading {
+    background-color: #FCE283;
+    font-size: 30px;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    color: #026667;
+    height: 97px !important;
+    font-family: 'Mulish', sans-serif;
+    border: 2px solid #FCE283 !important;
+}
+
+
+Button.scroll-item-level-section:hover,
+Button.scroll-item-level-section-mini:hover {
+    color: #026667 !important ;
+    border: 2px solid #026667 !important;
+    background: white !important
+}
+
+button.scroll-item-level-section.heading:hover {
+    color: #FCE283!important ;
+    border: 2px solid #FCE283 !important;
+    background: #026667 !important
+}
+
+AccordionTab.scroll-item-level-section {
+    width: 100% ;
+    height: 120px ;
+    padding: 20px ;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    color: #026667;
+    border: none;
+    margin-top: 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.scroll-item-level-section #pr_id_1_header_0,
+.scroll-item-level-section #pr_id_1_header_1 {
+    width: 100%;
+    height: 120px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    color: #026667;
+    border: none;
+    margin-top: 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+Button.scroll-item-level-section-mini {
+    width: 100%;
+    height: 80px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    color: #026667;
+    border: none;
+    margin-top: 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Mulish', sans-serif;
+}
+
+.scroll-item-level-section .p-accordion-content {
+    background: none !important;
+}
+
+.scroll-item-level-section #pr_id_1_header_0:focus:not(:focus-visible),
+.scroll-item-level-section #pr_id_1_header_1:focus:not(:focus-visible) {
+    background-color: white;
+    outline: 0;
+    border-color: inherit;
+    box-shadow: none;
+
+}
+
+@media screen and (max-width: 926px) {
+    .learn-level-page.p-grid {
+        flex-direction: column-reverse;
+    }
+}

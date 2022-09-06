@@ -1,0 +1,32 @@
+/*POP-UP CONGRATULATION*/
+.congra-img img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+}
+.congra-txt {
+  text-align: center;
+}
+.congra-score {
+  font-size: 50px;
+  color: #026670;
+}
+
+
+#no-play-game {
+  background-color: #fff;
+  color: #026670;
+  border: solid 2px #fff;
+}
+#no-play-game:hover {
+  border: solid 2px #026670;
+}
+#yes-play-game {
+  background-color: #fce181;
+  color: #026670;
+  border: 2px solid #fce181;
+}
+#yes-play-game:hover {
+  background-color: #fff;
+}

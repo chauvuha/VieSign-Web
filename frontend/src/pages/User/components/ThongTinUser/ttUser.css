@@ -1,0 +1,147 @@
+#card2 {
+  margin: 28px;
+  padding: 10px;
+}
+#card2 img {
+  width: 65%;
+  border-radius: 50px;
+}
+#card2 .p-card-title {
+  color: #000;
+  text-align: left;
+  padding: 0;
+  margin-left: 1px;
+}
+
+#card2 .hoten {
+  text-align: left;
+  font-weight: bold;
+  font-family: Mulish;
+  font-size: larger;
+}
+#card2 .email {
+  text-align: left;
+  font-weight: normal;
+}
+#card2 .p-button-text {
+  float: left;
+  margin-top: 1px;
+  padding: 0;
+  color: #fff;
+}
+
+#card2 .p-button.p-fileupload-choose {
+  margin-top: 5px;
+  background: #fce181 !important;
+  border: 2px solid #fce181 !important;
+}
+
+#card2 .p-button.p-fileupload-choose.pi-plus:before {
+  color: white !important;
+}
+
+#card2 .p-button.p-fileupload-choose:hover,
+#card2 .p-button.p-fileupload-choose {
+  color: #026670 !important;
+}
+
+#card2 .p-button.p-fileupload-choose:hover {
+  background: rgb(212, 189, 189) !important;
+}
+
+#card2 .p-button.p-fileupload-choose:hover,
+#card2 .btn-TTUser button {
+  border: 2px solid #026670 !important;
+}
+
+#card2 .btn-TTUser {
+  margin-bottom: 50px !important;
+}
+
+
+#card2 .role-user {
+  font-family: Mulish;
+  color: #026670;
+  padding: 5px 0;
+  border: 2px solid #026670;
+  border-radius: 25px;
+  background-color: rgb(195, 235, 216);
+}
+
+#card2-info-user {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+#tttk,
+#dcll {
+  text-align: left;
+}
+#tttk .p-button-text,
+#dcll .p-button-text {
+  color: #026670;
+  float: right;
+}
+#name-card-info-user {
+  color: #000;
+  font-size: large;
+}
+
+#txt-info-user {
+  font-weight: normal;
+  color: #00000040;
+}
+#user .btn-signup {
+  background-color: #026670;
+  width: 50%;
+}
+
+#user button.p-button.p-component.btn-signup:hover {
+  color: #026670;
+  background-color: #fff;
+}
+#user .btn-TTUser button {
+  width: 60% !important;
+  margin: 0 auto;
+}
+#user .image-item {
+  display: flex;
+  margin: 10px 0;
+}
+#user .image-item__btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+#user .scrollpanel-demo .card {
+  width: 100% !important;
+  margin: 0px ;
+}
+
+@media screen and (max-width: 732px) {
+  #card2 {
+    margin: 2px;
+    padding:2px;
+  } 
+
+  #card2 .p-card-title  {
+    font-size: 18px !important;
+  }
+  .ttuser .p-field {
+    width: 90%;
+  }
+
+  #card2  {
+    width: 100%;
+  }
+
+  #card2 .p-divider {
+    display: none;
+  }
+
+  #card2-info-user {
+    border: 0px;
+    width: 80% !important;
+  }
+}

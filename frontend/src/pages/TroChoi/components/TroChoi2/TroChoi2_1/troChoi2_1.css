@@ -1,0 +1,198 @@
+#game2 {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.point-game2 {
+  border: 1px solid #026670;
+  background-color: #026670;
+  border-radius: 10px;
+  color: #fff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 70%;
+  margin-bottom: 10px !important;
+}
+
+.card-body-game2 {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+}
+.card-content-game2 {
+  perspective: 1000px;
+  box-shadow: 0px 11px 10px -15px #111;
+  width: 230px;
+  height: 160px;
+}
+
+/* Trò choi 3*/
+.card-content-game2-3 {
+  perspective: 1000px;
+  box-shadow: 0px 11px 10px -15px #111;
+  width: 240px;
+  height: 140px;
+}
+.card-body-game2-3 {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-bottom: 0px;
+}
+/* Trò choi 3*/
+
+.card-flip-game2 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+.card-content-game2:hover .card-flip-game2,
+.card-content-game2-3:hover .card-flip-game2 {
+  transform: rotateY(180deg);
+}
+.card-front,
+.card-back {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+}
+.card-front {
+  background-color: #026670;
+  width: 100%;
+  height: 100%;
+}
+.card-back {
+  background-color: yellow;
+  transform: rotateY(180deg);
+  width: 100%;
+  height: 100%;
+}
+
+/*Circle time*/
+
+.timer-wrapper {
+  display: flex;
+  justify-content: right;
+}
+
+.time-wrapper {
+  position: relative;
+  width: 80px;
+  height: 60px;
+  font-size: 48px;
+}
+
+.time-wrapper .time {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 0.2s;
+  font-size: 17px;
+}
+
+.time-wrapper .time.up {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.time-wrapper .time.down {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+#content-game2 {
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 726px) {
+  #game2 .p-col-8,
+  .card-game2 .p-col-3 {
+    width: 100%;
+  }
+  .point-game2 {
+    font-size: small;
+    margin-bottom: 10px;
+  }
+  #game2 {
+    margin-left: 5px;
+  }
+  .card-content-game2 {
+    margin: 0 auto;
+    width: 300px;
+    height: 200px;
+  }
+}
+
+
+.card {
+  margin: 6px 7px;
+  display: inline-block !important;
+}
+
+.flippy-front,
+.flippy-back {
+  width: 230px;
+  height: 160px;
+}
+
+.flipImage {
+  object-fit: cover;
+  object-position: 85% 50%;
+  border-radius: 5px;
+  width: 230px;
+  height: 160px;
+}
+
+.winFlipImage {
+  border-radius: 5px;
+  position: absolute;
+  background: linear-gradient(
+    161deg,
+    rgb(255, 239, 18) 0%,
+    rgba(227, 200, 47, 0)
+  );
+  width: 160px;
+  height: auto;
+}
+
+.containerFlipImage {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.containerFrontSide {
+  border-radius: 5px;
+  background-color: #41669d;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backCardImage {
+  border-radius: 5px;
+  width: auto;
+  height: 160px;
+}
+
+.flippyContainer {
+  display: block;
+  width: 300px !important;
+  height: 185px !important;
+}
+

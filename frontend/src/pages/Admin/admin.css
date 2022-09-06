@@ -1,0 +1,114 @@
+/*Thong tin chung admin*/
+
+#admin {
+  background-color: #e5e5e5;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#card1-admin {
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
+}
+#info-admin img {
+  width: 75%;
+  border-radius: 50px;
+}
+#card1-admin .p-card-title {
+  text-align: center;
+  float: left;
+  font-family: Mulish;
+  color: #000;
+  font-size: large;
+}
+.game-body {
+  margin-left: 2px;
+}
+#info-admin,
+#menu-admin {
+  border-bottom: 1px solid rgb(230, 230, 230);
+  margin-bottom: 15px;
+}
+
+#menu-admin .p-button.p-button-text {
+  float: left;
+  color: #000;
+  font-size: 15px;
+}
+#menu-admin i,
+#sign-out i {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+#sign-out {
+  margin-bottom: 15px;
+}
+#sign-out .p-button.p-button-text {
+  float: left;
+  color: #d32f2f;
+  font-size: 15px;
+}
+#card1-admin .p-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+}
+@media screen and (max-width: 826px) {
+  /*Thong tin chung admin*/
+  #card1-admin img {
+    margin: 0;
+    padding: 0;
+    border-radius: 50px;
+    width: 70px;
+  }
+  #info-admin .p-card-title {
+    display: none;
+  }
+}
+@media screen and (max-width: 540px) {
+  #card1-admin img {
+    margin: 0;
+    padding: 0;
+    border-radius: 50px;
+    width: 20px;
+  }
+  #info-admin .p-card-title {
+    display: none;
+  }
+
+  #menu-admin {
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .menu-admin-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-admin-section.p-button {
+    display: flex;
+    justify-content: space-around !important;
+    align-items: center;
+  }
+
+  #menu-admin .p-button.p-button-text .txt,
+  #sign-out .p-button.p-button-text .txt {
+    display: none;
+  }
+  #menu-admin i,
+  #sign-out i {
+    width: 30%;
+    text-align: center;
+    margin-right: 0px !important;
+    width: 100%;
+  }
+
+  #sign-out {
+    margin-left: 0px !important;
+  }
+}

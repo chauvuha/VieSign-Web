@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,700;1,500;1,700&display=swap');
+ 
+/*Chung ca trang About*/
+
+* {
+   font-family: 'Mulish', sans-serif;
+   font-weight: 600;
+}
+ 
+.cl-darkgreen {
+   color: #026670;
+}
+ 
+p,
+.statement {
+   font-size: 20px;
+}
+ 
+.statement {
+   width: 70%;
+}
+ 
+.mb-20 {
+   margin-bottom: 80px;
+}
+ 
+.mb-10 {
+   margin-bottom: 40px;
+}
+
+/*Thanh sidebar trang About*/
+.p-button-about:hover {
+   color: #fff !important;
+   background: #026670 !important
+}
+
+.p-button-about {
+   width: 100%;
+   color:#026670 !important;
+   margin-bottom: 15px;
+   background: #fff !important
+}
+
+
+Button:focus:not(:focus-visible).p-button-about {
+   background: #026670 !important;
+   color: #fff !important;
+}
+
+Button:focus:not(:focus-visible).p-button-about .p-button-icon:hover {
+   color: #026670
+}
+
+Button:focus:not(:focus-visible).p-button-about .p-button-icon {
+   color: #026670
+}
+ 
+.p-tabview-nav-container {
+   display: none;
+}
+
+.about-tabview {
+   background-color: white;
+}
+         
+.about-tabview-content {
+   padding-top: 120px;
+   padding-bottom: 220px;
+}
+
+.about-navigate-button {
+   display: flex;
+   flex-direction: column;
+   justify-content: left;
+}
+ 
+.about-navigate-button > .p-button, .p-button:not(button):not(a):not(.p-disabled) {
+   background-color: white;
+   border: 0px;
+   text-align: left;
+}
+ 
+.about-navigate-button > span.p-button-icon, .p-checkbox-box, .p-checkbox-icon {
+   margin-right: 0px !important;
+}
+
+ /*Muc thanh vien doi ngu*/
+.team-members {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+ 
+.member-name {
+   color:#026670;
+   font-weight: bold;
+   margin: 10px;
+   font-size: 22px;
+}
+ 
+.member-photo img {
+   width: 130px;
+   height: auto;
+   margin: 20px;
+   box-shadow: 7px 7px 0px 1px #026670;;
+}
+ 
+.hand-detection {
+   height: 200px;
+}
+ 
+Button.button-ced {
+   border: 3px solid #FCE283 !important;
+   background: #FCE283 !important;
+   font-size: 25px;
+   width: 250px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 50px;
+   color: #026670 !important;       
+   margin-bottom: 10px !important;
+}
+
+Button.button-ced:hover,
+.button-ced a:hover {
+   background: #026670  !important;
+   color:#FCE283 !important
+}
+ 
+.button-ced a {
+   text-decoration: inherit;
+   color: #026670;
+   font-weight: bold;
+}
+
+ 
+.ced,
+.mentor,
+.designer {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   padding: 20px 0px 10px 0px;
+}
+ 
+.ced-logo {
+   height: 100px;
+}
+ 
+.button-left {
+   display: flex;
+   flex-direction: column;
+   text-align: left;
+}
+ 
+ /*Muc Mission/ Muc dich VieSign*/
+
+.mission {
+   padding: 20px;
+   margin: 20px;
+   background-color: #FCE283;
+   box-shadow: 10px 10px 0px 0px #026670;
+   width: 90%;
+}
+
+.p-tabview-nav-link {
+   display: none;
+}
+
+ /*Responsive*/
+
+@media (max-width: 768px) { 
+   .team-members {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+   }
+ 
+   .p-tabview {
+       display: flex;
+       flex-direction: column !important;
+   }
+ 
+   .hand-detection {
+       height: 100px;
+   }
+ 
+   .ced-picture img {
+       height: 200px;
+   }
+ 
+   .button-learn,
+   .button-ced {
+       border: none;
+       padding: 6px 12px;
+   }
+ 
+   .about-navigate-button {
+       display: flex;
+       flex-direction: row;
+       justify-content: left;
+       column-gap: 15px;
+   }
+ 
+   .about-tabview-content {
+       padding: 20px;
+   }
+}
+ 
+ 
+

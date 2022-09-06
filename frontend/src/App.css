@@ -1,0 +1,83 @@
+
+.App {
+  text-align: center;
+  font-family: Mulish;
+  background-color: #E5E5E5;
+}
+
+.p-grid {
+  margin: 0 !important;
+}
+
+.p-dialog-header-icon:focus,
+.p-menubar-button:focus,
+.p-dropdown.p-component.p-inputwrapper.p-inputwrapper-focus,
+.p-checkbox.p-component.p-checkbox-checked,
+.p-checkbox.p-component.p-checkbox-checkfocuseded,
+.p-checkbox-box.p-focus {
+  -webkit-box-shadow: none; 
+  box-shadow: none !important;
+  outline: white
+}
+
+
+.p-dropdown.p-component.p-inputwrapper.p-inputwrapper-focus,
+.p-dropdown.p-component.p-inputwrapper:hover {
+  border: 1px solid #026670 !important
+}
+
+.p-checkbox-box.p-highlight {
+  color: #026670
+}
+
+input:focus,
+textarea:focus {
+  -webkit-box-shadow: none; 
+  box-shadow: none !important;
+  outline: white
+}
+
+.p-checkbox-box.p-highlight {
+  background-color: #026670 !important;
+  border: 1px solid #026670 !important
+}
+
+.p-inputtext:enabled:focus,
+.p-inputtext:enabled:hover {
+  border-color: rgb(206, 212, 218) !important; 
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

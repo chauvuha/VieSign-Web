@@ -1,0 +1,50 @@
+.img-game img {
+  width: 100%;
+  height: auto;
+}
+
+#info-game {
+  min-height: 560px;
+}
+#info-game .p-card-title,
+#info-game .p-card-subtitle {
+  color: #000;
+}
+
+#info-game .p-col-8 {
+  margin-bottom: 15px;
+}
+
+.ta-center {
+  text-align: center;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.mt-70 {
+  margin-top: 70px;
+}
+
+.link-game {
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  transition: 0.5s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.5s box-shadow,
+    0.5s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  cursor: pointer;
+  margin: 5px;
+}
+
+.link-game:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+  background-color: #FCE181;
+}
+
+@media screen and (max-width: 726px) {
+  .game-body .p-col-3 {
+    width: 100%;
+  }
+}

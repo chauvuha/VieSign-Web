@@ -1,0 +1,227 @@
+/*Thong tin chung user*/
+#user {
+  background-color: #e5e5e5;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+#card1-user {
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
+}
+#card1-user img {
+  width: 75%;
+  border-radius: 50px;
+}
+
+#card1-user .p-card-title {
+  text-align: center;
+  float: left;
+  font-family: Mulish;
+  color: #000;
+  font-size: large;
+}
+
+#card1-user .p-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.game-body{
+  margin-left: 2px;
+}
+#info-user,
+#menu-user {
+  border-bottom: 1px solid rgb(230, 230, 230);
+  margin-bottom: 15px;
+  width: 100%
+}
+
+#menu-user .p-button.p-button-text {
+  float: left;
+  color: black;
+  font-size: 15px;
+  width: 100%;
+}
+
+#menu-user .p-button {
+  margin-bottom: 8px;
+}
+
+#menu-user .p-button.p-button-text:focus:not(:focus-visible) {
+  color: white;
+  background: #026667;
+  width: 100%;
+}
+
+#menu-user .p-button.p-button-text:hover {
+  color: white;
+  background: #026667;
+  width: 100%;
+}
+
+#menu-user i,
+#sign-out i {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+#sign-out {
+  margin-bottom: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+#sign-out .p-button.p-button-text {
+  float: left;
+  color: #d32f2f;
+  font-size: 15px;
+  padding:6px 12px;
+  width: 100%;
+}
+
+#sign-out .p-button.p-button-text:hover {
+  color: white;
+  background: #d32f2f;
+  width: 100%;
+}
+
+#card1-user .p-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+}
+
+#card2-info-user {
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 826px) {
+  /*Thong tin chung user*/
+  #card1-user img {
+    margin: 0;
+    padding: 0;
+    border-radius: 50px;
+    width: 70px;
+  }
+  #info-user .p-card-title {
+    display: none;
+  }
+
+  /*Danh sách bài học*/
+  #processUser {
+    color: #000;
+    display: unset;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+  }
+  #card-lesson-info .btnLearn {
+    width: 50%;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+  #card2TT .p-col-3 {
+    width: 100%;
+  }
+
+  #menu-user .p-button.p-button-text {
+    float: left;
+    color: black;
+    font-size: 15px;
+    padding: 4px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  /*Thong tin chung user*/
+  #card1-user img {
+    margin: 0;
+    padding: 0;
+    border-radius: 50px;
+    width: 20px;
+  }
+
+  #menu-user {
+    align-items: center ;
+    justify-content: center;
+  }
+
+  .menu-user-section {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+ }
+
+ .menu-user-section.p-button {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   padding: 6px 12px;
+ }
+
+  #menu-user .p-button.p-button-text .txt,
+  #sign-out .p-button.p-button-text .txt {
+    display: none;
+  }
+  #menu-user i,
+  #sign-out i {
+    width: 30%;
+    text-align: center;
+    margin-right: 0px ;
+    width: 100%;
+  }
+
+  #sign-out {
+    margin-left: 0px;
+  }
+
+  #info-user .p-card-title {
+    display: none;
+  }
+}
+
+/* ScrollPanelDemo.css */
+
+.scrollpanel-demo .p-scrollpanel p {
+  padding: 0.5rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.scrollpanel-demo .p-scrollpanel.custombar1 .p-scrollpanel-wrapper {
+  border-right: 10px solid var(--surface-b);
+}
+
+.scrollpanel-demo .p-scrollpanel.custombar1 .p-scrollpanel-bar {
+  background-color: var(--primary-color);
+  opacity: 1;
+  transition: background-color 0.2s;
+}
+
+.scrollpanel-demo .p-scrollpanel.custombar1 .p-scrollpanel-bar:hover {
+  background-color: #007ad9;
+}
+
+.scrollpanel-demo .p-scrollpanel.custombar2 .p-scrollpanel-wrapper {
+  border-right: 10px solid var(--surface-b);
+  border-bottom: 10px solid var(--surface-b);
+}
+
+.scrollpanel-demo .p-scrollpanel.custombar2 .p-scrollpanel-bar {
+  background-color: var(--surface-d);
+  border-radius: 0;
+  opacity: 1;
+  transition: background-color 0.2s;
+}
+
+.scrollpanel-demo .p-col-12 {
+  padding: 2rem;
+}

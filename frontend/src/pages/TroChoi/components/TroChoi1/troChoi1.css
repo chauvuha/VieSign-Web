@@ -1,0 +1,146 @@
+.question-game {
+  text-align: left;
+  color: #495057;
+}
+.point-game {
+  padding-left: 98px;
+  color: #495057;
+}
+.point-game10 {
+  padding-left: 88px;
+  color: #495057;
+}
+.question-game10 {
+  text-align: left;
+  color: #495057;
+}
+.btn-question {
+  width: 100%;
+  margin-top: 5px;
+  background-color: #fff;
+  border: 2px solid white !important;
+}
+
+.btn-question:hover,
+Button:focus:not(:focus-visible).btn-question {
+  border: 2px solid #026670 !important;
+}
+
+.btn-question:hover {
+  background: white !important;
+}
+
+Button:focus:not(:focus-visible).btn-question {
+  background: #026670 !important;
+  color: white !important;
+}
+
+.btn-done-game {
+  margin-top: 10px;
+  width: 100%;
+  padding-bottom: 6px;
+  background-color: #fce181;
+  color: #026670;
+  border: 2px solid #fce181;
+}
+
+button.p-button.p-component.btn-done-game:hover {
+  background-color: #026670;
+  color: #fce181;
+  border: 2px solid #fce181;
+}
+
+button.p-button.p-component.btn-question:focus .point-game,
+button.p-button.p-component.btn-question:focus .question-game,
+button.p-button.p-component.btn-question:focus .point-game10,
+button.p-button.p-component.btn-question:focus .question-game10 {
+  color: #fff;
+}
+button.p-button.p-component.btn-question:focus {
+  background-color: #fff;
+}
+#time-game {
+  border: 0px solid #fff;
+  background-color: #fff;
+  border-radius: 3px;
+  margin-left: 1px;
+}
+.col-time-question {
+  margin: 20px 0;
+}
+#no-play-game {
+  background-color: #fff;
+  color: #026670;
+  margin-top: 30px;
+  border: solid 2px #fff;
+  padding: 6px 12px;
+  margin-bottom: 5px;
+}
+#no-play-game:hover {
+  border: solid 2px #026670;
+}
+#yes-play-game {
+  background-color: #fce181;
+  color: #026670;
+  border: 2px solid #fce181;
+  padding: 6px 12px;
+  margin-bottom: 5px;
+}
+#yes-play-game:hover {
+  background-color: #fff;
+}
+
+.content-video-game1 {
+  height: 437px;
+}
+.point-game2 {
+  margin-left: 0px;
+  margin-bottom: 5px;
+}
+
+.tracnghiem-body.game-tracnghiem {
+  margin-top: 0px;
+}
+
+.p-col-2 .col-time-question {
+  padding-top: 20px;
+}
+
+@media screen and (max-width: 726px) {
+  #game1 .p-col-2,
+  #game1 .p-col-6 {
+    width: 100%;
+  }
+  .btn-question {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  #time-game {
+    display: flex;
+    justify-content: space-between;
+  }
+  .col-time-question {
+    padding: 10px;
+  }
+  .col-time-question button .question-game  {
+    padding: 10px;
+  }
+  
+}
+
+
+/*POP-UP CONGRATULATION*/
+.congra-img img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+}
+.congra-txt {
+  text-align: center;
+}
+.congra-score {
+  font-size: 50px;
+  color: #026670;
+}
