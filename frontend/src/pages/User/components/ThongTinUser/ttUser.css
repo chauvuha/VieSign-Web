@@ -58,7 +58,6 @@
   margin-bottom: 50px !important;
 }
 
-
 #card2 .role-user {
   font-family: Mulish;
   color: #026670;
@@ -116,23 +115,39 @@
 
 #user .scrollpanel-demo .card {
   width: 100% !important;
-  margin: 0px ;
+  margin: 0px;
+}
+.p-button-label {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 7vw;
+  white-space: nowrap;
 }
 
+.upload-wrapper {
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.upload-wrapper > :nth-child(2) {
+  margin: auto 0;
+  padding-left: 10px;
+}
 @media screen and (max-width: 732px) {
   #card2 {
     margin: 2px;
-    padding:2px;
-  } 
+    padding: 2px;
+  }
 
-  #card2 .p-card-title  {
+  #card2 .p-card-title {
     font-size: 18px !important;
   }
   .ttuser .p-field {
     width: 90%;
   }
 
-  #card2  {
+  #card2 {
     width: 100%;
   }
 

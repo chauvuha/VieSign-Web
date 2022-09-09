@@ -14,7 +14,6 @@ function TaiKhoanUser({ user, topics }) {
   const [path, setPath] = useState(undefined);
 
   const ContentCard2 = ({ path }) => {
-   
     if (path === "profile") {
       return <ThongTinUser user={user} />;
     } else if (path === "trogiup") {
@@ -60,21 +59,18 @@ function TaiKhoanUser({ user, topics }) {
                 <span className="txt">Thông tin</span>
               </Button>
             </div>
-
           </div>
           <div id="sign-out">
             <div className="p-col-12 menu-user-section">
-              <Button className="p-text-bold p-button-text"  onClick={() => {
-                    window.localStorage.removeItem("id");
-                    window.location.pathname = "/";
-                  }}>
+              <Button
+                className="p-text-bold p-button-text"
+                onClick={() => {
+                  window.localStorage.removeItem("id");
+                  window.location.pathname = "/";
+                }}
+              >
                 <i class="pi pi-sign-out"></i>
-                <span
-                  className="txt"
-                 
-                >
-                  Đăng xuất
-                </span>
+                <span className="txt">Đăng xuất</span>
               </Button>
             </div>
           </div>
@@ -86,9 +82,7 @@ function TaiKhoanUser({ user, topics }) {
             <div className="card">
               <div className="">
                 <div className="">
-                  <ScrollPanel style={{ width: "", height: "860px" }}>
-                    <ContentCard2 path={path} />
-                  </ScrollPanel>
+                  <ContentCard2 path={path} />
                 </div>
               </div>
             </div>

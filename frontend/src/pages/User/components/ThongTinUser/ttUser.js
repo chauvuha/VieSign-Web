@@ -1,11 +1,9 @@
 import "./ttUser.css";
 import React, { useState, useRef } from "react";
-import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { Divider } from "primereact/divider";
 import { FileUpload } from "primereact/fileupload";
-import { Avatar } from "primereact/avatar";
 import axios from "axios";
 import { useForm, Controller } from "react-hook-form";
 import { classNames } from "primereact/utils";
@@ -16,6 +14,8 @@ import config from "../../../../config";
 
 function TTUser({ user }) {
   const navigate = useNavigate();
+  const [avatar, setAvatar] = useState("");
+
   const defaultValues = {
     hotenlot: "",
     ten: "",
@@ -35,20 +35,20 @@ function TTUser({ user }) {
     handleSubmit,
   } = useForm({ defaultValues });
 
-  const invoiceUploadHandler = ({ files }) => {
-    const [file] = files;
-    const fileReader = new FileReader();
-    fileReader.onload = (e) => {
-      uploadInvoice(e.target.result);
-      console.log(e.target);
+  const handleSelectFile = async (e) => {
+    const file = e.files[0];
+    const reader = new FileReader();
+    let blob = await fetch(file.objectURL).then((r) => r.blob()); //blob:url
+    reader.readAsDataURL(blob);
+    reader.onloadend = function () {
+      const base64data = reader.result;
+      setAvatar(base64data);
     };
-    fileReader.readAsDataURL(file);
-  };
-  const uploadInvoice = async (invoiceFile) => {
-    let formData = new FormData();
-    formData.append("invoiceFile", invoiceFile);
   };
 
+  const handleClearUpload = () => {
+    setAvatar("");
+  };
   const onSubmit = (data) => {
     let hotenlot =
       data.hotenlot !== ""
@@ -69,14 +69,13 @@ function TTUser({ user }) {
       city: data.city !== "" ? data.city : user.city,
       zipcode: data.zipcode !== "" ? data.zipcode : user.zipcode,
       phone: data.phone !== "" ? data.phone : user.phone,
-      url: data.url !== "" ? data.url : user.url,
+      url: avatar !== "" ? avatar : user.url,
     };
-
     if (data.password === "") {
       const key = "password";
-      delete info[key]; 
+      delete info[key];
     }
-    
+
     axios
       .post(`${config.APP_API}/user/update-user`, JSON.stringify(info), {
         headers: {
@@ -106,29 +105,22 @@ function TTUser({ user }) {
               <div className="p-sm-7 p-col-12 ta-center">
                 <div className="hoten"> {user.username}</div>
                 <div className="email">{user.email}</div>
-                {/*
-                <div>
-                  <Controller
-                    name="url"
-                    control={control}
-                    render={({ field }) => (
-                      <div className="card">
-                        <FileUpload
-                          id={field.url}
-                          mode="basic"
-                          customUpload={true}
-                          uploadHandler={invoiceUploadHandler}
-                          accept="image/*"
-                          maxFileSize={1000000}
-                          //onUpload={(e) => field.onChange(e)}
-                          className="p-button-text"
-                          chooseLabel="Đổi ảnh giao diện"
-                        />
-                      </div>
-                    )}
+
+                <div className="upload-wrapper">
+                  <FileUpload
+                    contentClassName="inner-file-upload"
+                    mode="basic"
+                    customUpload
+                    onSelect={handleSelectFile}
+                    accept="image/*"
+                    maxFileSize={1000000}
+                    className="p-button-text"
+                    chooseLabel="Đổi ảnh giao diện"
                   />
+                  {/* {avatar !== "" && (
+                    <i class="pi pi-times" onClick={handleClearUpload} />
+                  )} */}
                 </div>
-                */}
               </div>
               <div className="p-sm-3 p-col-12">
                 <div className="role-user">Học viên</div>
@@ -136,101 +128,98 @@ function TTUser({ user }) {
             </div>
             <Divider />
 
-              <div className="p-grid flexcard" id="tttk">
-                <div className="p-col-10" id="name-card-info-user">
-                  Thông tin tài khoản
-                </div>
-                <div className=" p-col-2"></div>
+            <div className="p-grid flexcard" id="tttk">
+              <div className="p-col-10" id="name-card-info-user">
+                Thông tin tài khoản
               </div>
-              <div className="p-fluid p-formgrid p-grid">
-                <div className="p-field p-col-12 p-md-6">
-                  <label htmlFor="hotenlot" id="txt-info-user">
-                    Họ và tên lót
-                  </label>
-                  <Controller
-                    name="hotenlot"
-                    control={control}
-                    render={({ field, fieldState }) => (
-                      <InputText
-                        id={field.hotenlot}
-                        {...field}
-                        className={classNames({
-                          "p-invalid": fieldState.invalid,
-                        })}
-                        type="text"
-                        placeholder={user.username
-                          .split(" ")
-                          .slice(0, -1)
-                          .join(" ")}
-                      />
-                    )}
-                  />
-                </div>
-                <div className="p-field p-col-12 p-md-6">
-                  <label htmlFor="ten" id="txt-info-user">
-                    Tên
-                  </label>
-                  <Controller
-                    name="ten"
-                    control={control}
-                    render={({ field, fieldState }) => (
-                      <InputText
-                        id={field.ten}
-                        {...field}
-                        className={classNames({
-                          "p-invalid": fieldState.invalid,
-                        })}
-                        type="text"
-                        placeholder={user.username
-                          .split(" ")
-                          .slice(-1)
-                          .join(" ")}
-                      />
-                    )}
-                  />
-                </div>
-                <div className="p-field p-col-12 p-md-6">
-                  <label htmlFor="ngaysinh" id="txt-info-user" class>
-                    Ngày sinh
-                  </label>
-                  <div>
-                    <Controller
-                      name="date"
-                      control={control}
-                      render={({ field }) => (
-                        <Calendar
-                          id={field.date}
-                          onChange={(e) => field.onChange(e.value)}
-                          dateFormat="dd-mm-yy"
-                          // mask="99/99/9999"
-                          showIcon
-                          placeholder={user.dob}
-                        />
-                      )}
+              <div className=" p-col-2"></div>
+            </div>
+            <div className="p-fluid p-formgrid p-grid">
+              <div className="p-field p-col-12 p-md-6">
+                <label htmlFor="hotenlot" id="txt-info-user">
+                  Họ và tên lót
+                </label>
+                <Controller
+                  name="hotenlot"
+                  control={control}
+                  render={({ field, fieldState }) => (
+                    <InputText
+                      id={field.hotenlot}
+                      {...field}
+                      className={classNames({
+                        "p-invalid": fieldState.invalid,
+                      })}
+                      type="text"
+                      placeholder={user.username
+                        .split(" ")
+                        .slice(0, -1)
+                        .join(" ")}
                     />
-                  </div>
-                </div>
-                <div className="p-field p-col-12 p-md-6">
-                  <label htmlFor="password" id="txt-info-user">
-                    Password
-                  </label>
+                  )}
+                />
+              </div>
+              <div className="p-field p-col-12 p-md-6">
+                <label htmlFor="ten" id="txt-info-user">
+                  Tên
+                </label>
+                <Controller
+                  name="ten"
+                  control={control}
+                  render={({ field, fieldState }) => (
+                    <InputText
+                      id={field.ten}
+                      {...field}
+                      className={classNames({
+                        "p-invalid": fieldState.invalid,
+                      })}
+                      type="text"
+                      placeholder={user.username.split(" ").slice(-1).join(" ")}
+                    />
+                  )}
+                />
+              </div>
+              <div className="p-field p-col-12 p-md-6">
+                <label htmlFor="ngaysinh" id="txt-info-user" class>
+                  Ngày sinh
+                </label>
+                <div>
                   <Controller
-                    name="password"
+                    name="date"
                     control={control}
-                    render={({ field, fieldState }) => (
-                      <InputText
-                        id={field.password}
-                        {...field}
-                        className={classNames({
-                          "p-invalid": fieldState.invalid,
-                        })}
-                        type="password"
-                        placeholder="******"
+                    render={({ field }) => (
+                      <Calendar
+                        id={field.date}
+                        onChange={(e) => field.onChange(e.value)}
+                        dateFormat="dd-mm-yy"
+                        // mask="99/99/9999"
+                        showIcon
+                        placeholder={user.dob}
                       />
                     )}
                   />
                 </div>
               </div>
+              <div className="p-field p-col-12 p-md-6">
+                <label htmlFor="password" id="txt-info-user">
+                  Password
+                </label>
+                <Controller
+                  name="password"
+                  control={control}
+                  render={({ field, fieldState }) => (
+                    <InputText
+                      id={field.password}
+                      {...field}
+                      className={classNames({
+                        "p-invalid": fieldState.invalid,
+                      })}
+                      type="password"
+                      placeholder="******"
+                    />
+                  )}
+                />
+              </div>
+            </div>
             <Divider />
             <div>
               <div className="p-grid flexcard" id="dcll">
