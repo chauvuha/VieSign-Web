@@ -28,7 +28,7 @@ const ThongTin = () => {
                 className="p-button-about p-text-bold p-button-text"
                 onClick={() => { setActiveIndex1(0); }}
               >
-                <i class="pi pi-angle-right"></i>
+                <i className="pi pi-angle-right"></i>
                 <span className="txt">{t('aboutus-sidebar-one')}</span>
               </Button>
             </div>
@@ -37,7 +37,7 @@ const ThongTin = () => {
                 className="p-button-about p-text-bold p-button-text"
                 onClick={() => { setActiveIndex1(1); }}
               >
-                <i class="pi pi-angle-right"></i>
+                <i className="pi pi-angle-right"></i>
                 <span className="txt">{t('aboutus-sidebar-two')}</span>
               </Button>
             </div>
@@ -46,7 +46,7 @@ const ThongTin = () => {
                 className=" p-button-about p-text-bold p-button-text"
                 onClick={() => { setActiveIndex1(2); }}
               >
-                <i class="pi pi-angle-right"></i>
+                <i className="pi pi-angle-right"></i>
                 <span className="txt">{t('aboutus-sidebar-three')}</span>
               </Button>
             </div>
@@ -65,7 +65,7 @@ const ThongTin = () => {
                 </div>
                 <div className="mission mission-three">
                   <p>{t('aboutus-goal-three')}</p>
-                  <img className="hand-detection" src={require('../../assets/images/handetection.png').default} />
+                  <img className="hand-detection" alt="handetection" src={require('../../assets/images/handetection.png').default} />
                 </div>
 
               </TabPanel>
@@ -77,7 +77,7 @@ const ThongTin = () => {
                     <div className="team-members mb-10">
                       <div className="member">
                         <div className="member-photo">
-                          <img src={require('../../assets/images/duyuyen.jpg').default} />
+                          <img alt="duyuyen" src={require('../../assets/images/duyuyen.jpg').default} />
                         </div>
                         <div className="member-name">
                           Phan Bình Duy Uyên
@@ -85,7 +85,7 @@ const ThongTin = () => {
                       </div>
                       <div className="member">
                         <div className="member-photo">
-                          <img src={require('../../assets/images/vuhachau.jpg').default} />
+                          <img alt="vuhachau" src={require('../../assets/images/vuhachau.jpg').default} />
                         </div>
                         <div className="member-name">
                           Vũ Hà Châu
@@ -93,7 +93,7 @@ const ThongTin = () => {
                       </div>
                       <div className="member">
                         <div className="member-photo">
-                          <img src={require('../../assets/images/huynhviha.jpeg').default} />
+                          <img alt="viha" src={require('../../assets/images/huynhviha.jpeg').default} />
                         </div>
                         <div className="member-name">
                           Huỳnh Vĩ Hà
@@ -101,7 +101,7 @@ const ThongTin = () => {
                       </div>
                       <div className="member">
                         <div className="member-photo">
-                        <img src={require('../../assets/images/TranUy.png').default} />
+                        <img alt="tranuy" src={require('../../assets/images/TranUy.png').default} />
                         </div>
                         <div className="member-name">
                           Trần Khánh Gia Uy
@@ -114,7 +114,7 @@ const ThongTin = () => {
                     <div className="team-members mb-10">
                       <div className="member">
                         <div className="member-photo">
-                          <img src={require('../../assets/images/kimngan.jpg').default} />
+                          <img alt="kimngan" src={require('../../assets/images/kimngan.jpg').default} />
                         </div>
                         <div className="member-name">
                           Nguyễn Ngọc Kim Ngân
@@ -122,7 +122,7 @@ const ThongTin = () => {
                       </div>
                       <div className="member">
                         <div className="member-photo">
-                          <img src={require('../../assets/images/ngocquy.jpg').default} />
+                          <img alt="ngocquy" src={require('../../assets/images/ngocquy.jpg').default} />
                         </div>
                         <div className="member-name">
                           Ngô Lê Ngọc Quý
@@ -145,7 +145,7 @@ const ThongTin = () => {
                     <div className="team-members mb-10">
                       <div className="member">
                         <div className="member-photo">
-                          <img src={require('../../assets/images/ced/duongphuonghanh.png').default} />
+                          <img alt="hanh" src={require('../../assets/images/ced/duongphuonghanh.png').default} />
                         </div>
                         <div className="member-name">
                           Dương Phương Hạnh
@@ -156,7 +156,7 @@ const ThongTin = () => {
                       </div>
                       <div className="member">
                         <div className="member-photo">
-                          <img src={require('../../assets/images/ced/tothibichphuong.png').default} />
+                          <img alt="phuong" src={require('../../assets/images/ced/tothibichphuong.png').default} />
                         </div>
                         <div className="member-name">
                           Tô Thị Bích Phương
@@ -167,7 +167,7 @@ const ThongTin = () => {
                       </div>
                       <div className="member">
                         <div className="member-photo">
-                          <img src={require('../../assets/images/ced/buithingoc.jpg').default} />
+                          <img alt="ngoc" src={require('../../assets/images/ced/buithingoc.jpg').default} />
                         </div>
                         <div className="member-name">
                           Bùi Thị Ngọc
@@ -180,7 +180,7 @@ const ThongTin = () => {
                     <div className="team-members mb-10">
                       <div className="member">
                         <div className="member-photo">
-                          <img src={require('../../assets/images/ced/trieuthuymi.png').default} />
+                          <img alt="thuymi" src={require('../../assets/images/ced/trieuthuymi.png').default} />
                         </div>
                         <div className="member-name">
                           Triệu Thúy Mi
@@ -191,7 +191,7 @@ const ThongTin = () => {
                       </div>
                       <div className="member">
                         <div className="member-photo">
-                          <img src={require('../../assets/images/ced/phamthuyduong.jpg').default} />
+                          <img alt="duong" src={require('../../assets/images/ced/phamthuyduong.jpg').default} />
                         </div>
                         <div className="member-name">
                           Phạm Thùy Dương
@@ -202,7 +202,7 @@ const ThongTin = () => {
                       </div>
                       <div className="member">
                         <div className="member-photo">
-                          <img src={require('../../assets/images/ced/huakimhuong.png').default} />
+                          <img alt="huong" src={require('../../assets/images/ced/huakimhuong.png').default} />
                         </div>
                         <div className="member-name">
                           Hứa Kim Hương
@@ -222,7 +222,7 @@ const ThongTin = () => {
                   <div className="team-members mb-10">
                     <div className="member">
                       <div className="member-photo">
-                        <img src={require('../../assets/images/longtran.jpg').default} />
+                        <img alt="longtran" src={require('../../assets/images/longtran.jpg').default} />
                       </div>
                       <div className="member-name">
                         <div className="member-name">
@@ -235,7 +235,7 @@ const ThongTin = () => {
                     </div>
                     <div className="member">
                       <div className="member-photo">
-                        <img src={require('../../assets/images/vuthuytrang.jpg').default} />
+                        <img alt="trang" src={require('../../assets/images/vuthuytrang.jpg').default} />
                       </div>
                       <div className="member-name">
                         <div className="member-name">
@@ -251,7 +251,7 @@ const ThongTin = () => {
                   <div className="team-members mb-10">
                     <div className="member">
                       <div className="member-photo">
-                        <img src={require('../../assets/images/lemaithanhduc.jpeg').default} />
+                        <img alt="duc" src={require('../../assets/images/lemaithanhduc.jpeg').default} />
                       </div>
                       <div className="member-name">
                         <div className="member-name">
@@ -272,7 +272,7 @@ const ThongTin = () => {
                 <div className="team-members mb-10">
                   <div className="member">
                     <div className="member-photo">
-                      <img src={require('../../assets/images/tranthaihoa.jpg').default} />
+                      <img alt="thaihoa" src={require('../../assets/images/tranthaihoa.jpg').default} />
                     </div>
                     <div className="member-name">
                       <div className="member-name">
@@ -285,7 +285,7 @@ const ThongTin = () => {
                   </div>
                   <div className="member">
                     <div className="member-photo">
-                      <img src={require('../../assets/images/Khang.png').default} />
+                      <img alt="khang" src={require('../../assets/images/Khang.png').default} />
                     </div>
                     <div className="member-name">
                       <div className="member-name">

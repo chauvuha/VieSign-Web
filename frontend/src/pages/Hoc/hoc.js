@@ -3,6 +3,7 @@ import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import "primereact/resources/primereact.min.css";
 import "./hoc.css";
+import React, { Fragment } from "react";
 import { Button } from "primereact/button";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -91,12 +92,13 @@ function Hoc({ topics }) {
             <div className="learn-body-line p-grid">
               <div className=" p-col-12 p-sm-2"></div>
               {topics.map((item, index) => (
-                <>
+                <Fragment key={index}>
                   <button
                     className="learn-section p-col-12 p-sm-2"
                     onClick={() => setTopic(index + 1)}
                   >
                     <img
+                      alt="online"
                       width="100%"
                       src={require("../../assets/images/online.svg").default}
                       className="img"
@@ -106,7 +108,7 @@ function Hoc({ topics }) {
                     <div />
                   </button>
                   {index % 4 === 3 && <div className="p-col-12 p-sm-2"></div>}
-                </>
+                </Fragment>
               ))}
             </div>
           </div>
@@ -128,7 +130,10 @@ function Hoc({ topics }) {
           }}
         >
           <div className="congra-img">
-            <img src={require("../../assets/images/warn.png").default} />
+            <img
+              alt="warn"
+              src={require("../../assets/images/warn.png").default}
+            />
           </div>
           <div className="congra-txt">
             <p style={{ color: "#026670" }}>
@@ -148,7 +153,10 @@ function Hoc({ topics }) {
           }}
         >
           <div className="congra-img">
-            <img src={require("../../assets/images/warn.png").default} />
+            <img
+              alt="warn"
+              src={require("../../assets/images/warn.png").default}
+            />
           </div>
           <div className="congra-txt">
             <p style={{ color: "#026670" }}>

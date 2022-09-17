@@ -57,7 +57,7 @@ function Header({
   const end = (
     <div className="navbar-end">
       <Button className="p-text-bold p-button-text">
-        <i class="pi pi-sign-out sign-out-admin-icon"></i>
+        <i className="pi pi-sign-out sign-out-admin-icon"></i>
         <span
           className="sign-out-admin"
           onClick={() => {

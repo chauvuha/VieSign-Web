@@ -1,5 +1,6 @@
+/* eslint-disable react/jsx-pascal-case */
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Header/header";
 import Footer from "./Footer/footer";
@@ -33,6 +34,7 @@ import Support from "./pages/Support/support"
 function App() {
   const [user, setUser] = useState({});
   const [topics, setTopics] = useState([]);
+  const defaultTime = useRef(Date.now())
 
   useEffect(() => {
     if (window.localStorage.getItem("id") !== null) {
@@ -90,7 +92,7 @@ function App() {
           <Route
             path="/trochoi/gheptu"
             element={
-              <TroChoi1 topic={user.topic} timeLeft={Date.now() + 180000} />
+              <TroChoi1 topic={user.topic} timeLeft={defaultTime.current + 180000} />
             }
           ></Route>
           <Route

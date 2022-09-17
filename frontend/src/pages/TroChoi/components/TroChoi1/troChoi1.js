@@ -1,5 +1,11 @@
 import "./troChoi1.css";
-import React, { useState, useEffect } from "react";
+import React, {
+  useState,
+  useEffect,
+  Fragment,
+  useCallback,
+  useRef,
+} from "react";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import Countdown from "react-countdown";
@@ -14,7 +20,7 @@ import VideoVideo from "../../../Hoc/components/VideoVideo/videoVideo";
 import config from "../../../../config";
 
 function TroChoi1({ topic, timeLeft }) {
-  const [countdownProps, setCountdownProps] = useState({});
+  const countdownProps = useRef();
   const [displayBasic, setDisplayBasic] = useState(true);
   const [visible, setVisible] = useState(false);
   const [timesUp, setTimesUp] = useState(false);
@@ -28,6 +34,11 @@ function TroChoi1({ topic, timeLeft }) {
 
   const navigate = useNavigate();
   const listQuestion = allTopic.map((item) => item.question);
+  const dialogFuncMap = {
+    displayBasic: setDisplayBasic,
+    displayBasicPU: setdisplayBasicPU,
+  };
+
   useEffect(() => {
     axios
       .get(`${config.APP_API}/video/get-list-video-by-topic`, {
@@ -99,7 +110,7 @@ function TroChoi1({ topic, timeLeft }) {
 
         setQuestionVid(arr2);
       });
-  }, []);
+  }, [topic]);
 
   useEffect(() => {
     if (timesUp) {
@@ -147,7 +158,7 @@ function TroChoi1({ topic, timeLeft }) {
   const Completionist = () => <span>Hết giờ!</span>;
 
   const renderer = ({ hours, minutes, seconds, completed, api }) => {
-    setCountdownProps(api);
+    countdownProps.current = api;
     if (completed) {
       return <Completionist />;
     } else {
@@ -157,11 +168,6 @@ function TroChoi1({ topic, timeLeft }) {
         </span>
       );
     }
-  };
-
-  const dialogFuncMap = {
-    displayBasic: setDisplayBasic,
-    displayBasicPU: setdisplayBasicPU,
   };
   const onHide = (name) => {
     dialogFuncMap[`${name}`](false);
@@ -184,7 +190,7 @@ function TroChoi1({ topic, timeLeft }) {
           label="Đồng ý"
           icon="pi pi-check"
           onClick={() => {
-            countdownProps.start();
+            countdownProps.current.start();
             onHide(name);
             setVisible(true);
           }}
@@ -342,8 +348,7 @@ function TroChoi1({ topic, timeLeft }) {
         </div>
       </Dialog>
 
-      <div className="p-col-0 p-sm-2">
-      </div>
+      <div className="p-col-0 p-sm-2"></div>
 
       {visible && (
         <div className="tracnghiem-body game-tracnghiem p-col-12 p-sm-6">
@@ -352,7 +357,7 @@ function TroChoi1({ topic, timeLeft }) {
             <div className="p-col-4 p-text-right">{score}</div>
           </div>
           <div className="learn-card">
-            <Card footer={footer} className="card-game1" >
+            <Card footer={footer} className="card-game1">
               {questionStatus[currentQuestion - 1]?.type === 0 && (
                 <TextVideo
                   answer={questionStatus[currentQuestion - 1].answer}
@@ -392,9 +397,7 @@ function TroChoi1({ topic, timeLeft }) {
                 )}
             </Card>
           </div>
-
         </div>
-
       )}
       <div className=" p-col-12 p-sm-2">
         <div className="col-time-question">
@@ -417,20 +420,21 @@ function TroChoi1({ topic, timeLeft }) {
             {questionStatus
               .filter((_, index) => index < 10)
               .map((_, index) => (
-                <>
+                <Fragment key={index}>
                   <Button
                     className="btn-question"
                     onClick={() => handleClickQuestion(index + 1)}
                   >
                     <span
-                      className={`question-game ${currentQuestion === index + 1 ? "current" : ""
-                        }`}
+                      className={`question-game ${
+                        currentQuestion === index + 1 ? "current" : ""
+                      }`}
                     >
                       Câu {index + 1}
                     </span>
                     <span className="point-game"> 10 điểm</span>
                   </Button>
-                </>
+                </Fragment>
               ))}
 
             <div>
@@ -448,7 +452,6 @@ function TroChoi1({ topic, timeLeft }) {
         </div>
       </div>
 
-
       <>
         <Dialog
           visible={displayBasicPU}
@@ -458,6 +461,7 @@ function TroChoi1({ topic, timeLeft }) {
         >
           <div className="congra-img">
             <img
+              alt="congratulations"
               src={
                 require("../../../../assets/images/congratulations.png").default
               }

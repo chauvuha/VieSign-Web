@@ -33,7 +33,7 @@ function TaiKhoanUser({ user, topics }) {
               <img src={user.url} className="img" />
             </div>
             <div className="p-sm-9 p-col-12">
-              <span class="p-card-title">{user.username}</span>
+              <span className="p-card-title">{user.username}</span>
             </div>
           </div>
           <div id="menu-user" className="">
@@ -44,7 +44,7 @@ function TaiKhoanUser({ user, topics }) {
                   setPath("dsbh");
                 }}
               >
-                <i class="pi pi-list"></i>
+                <i className="pi pi-list"></i>
                 <span className="txt">Bài học</span>
               </Button>
             </div>
@@ -55,7 +55,7 @@ function TaiKhoanUser({ user, topics }) {
                   setPath("profile");
                 }}
               >
-                <i class="pi pi-user"></i>
+                <i className="pi pi-user"></i>
                 <span className="txt">Thông tin</span>
               </Button>
             </div>
@@ -69,7 +69,7 @@ function TaiKhoanUser({ user, topics }) {
                   window.location.pathname = "/";
                 }}
               >
-                <i class="pi pi-sign-out"></i>
+                <i className="pi pi-sign-out"></i>
                 <span className="txt">Đăng xuất</span>
               </Button>
             </div>

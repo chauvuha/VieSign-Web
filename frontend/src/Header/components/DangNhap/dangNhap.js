@@ -74,7 +74,6 @@ function DangNhap() {
   };
   const navigate = useNavigate();
   const onSubmit = (data) => {
-    console.log(data);
     axios
       .post(`${config.APP_API}/user/login`, data, {
         headers: {

@@ -53,13 +53,13 @@ function Footer() {
                 '_blank' 
               );
             }}
-          ><i class="pi pi-facebook"></i></Button>
+          ><i className="pi pi-facebook"></i></Button>
 
           <Button
             //icon="pi pi-envelope"
             className="p-button-rounded "
             onClick={() => Linking.openURL('mailto:viesign.team@gmail.com') }
-          ><i class="pi pi-envelope"></i></Button>
+          ><i className="pi pi-envelope"></i></Button>
           <Button
             //icon="pi pi-github"
             className="p-button-rounded"
@@ -69,7 +69,7 @@ function Footer() {
                 '_blank' 
               );
             }}
-          ><i class="pi pi-github"></i></Button>
+          ><i className="pi pi-github"></i></Button>
         </div>
       </div>
       <div className="p-col-1"></div>

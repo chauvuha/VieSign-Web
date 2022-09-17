@@ -58,6 +58,7 @@ function TroChoi() {
                       onClick={() => navigate("/trochoi/gheptu")}
                     >
                       <img
+                      alt="10words"
                         src={
                           require("../../assets/images/10wordschallenge.jpg")
                             .default
@@ -77,6 +78,7 @@ function TroChoi() {
                       onClick={() => setVisibleOptions(true)}
                     >
                       <img
+                      alt="game"
                         src={
                           require("../../assets/images/game.jpg")
                             .default

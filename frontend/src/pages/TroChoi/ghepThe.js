@@ -16,10 +16,14 @@ function GhepTheMenu() {
           <div className="p-col-12">
             <div className="p-grid flexcard game-body">
               <div className="p-col-12 p-sm-4">
-                <Link to="/trochoi/ghepthebon" style={{ textDecoration: "none" }}>
+                <Link
+                  to="/trochoi/ghepthebon"
+                  style={{ textDecoration: "none" }}
+                >
                   <Card className="link-game">
                     <div className="img-game">
                       <img
+                        alt="students"
                         src={
                           require("../../assets/images/students-with-puzzles.png")
                             .default
@@ -33,10 +37,14 @@ function GhepTheMenu() {
                 </Link>
               </div>
               <div className="p-col-12 p-sm-4">
-                <Link to="/trochoi/ghepthesau" style={{ textDecoration: "none" }}>
+                <Link
+                  to="/trochoi/ghepthesau"
+                  style={{ textDecoration: "none" }}
+                >
                   <Card className="link-game">
                     <div className="img-game">
                       <img
+                        alt="students"
                         src={
                           require("../../assets/images/students-with-puzzles.png")
                             .default
@@ -51,10 +59,14 @@ function GhepTheMenu() {
               </div>
 
               <div className="p-col-12 p-sm-4">
-                <Link to="/trochoi/ghepthetam" style={{ textDecoration: "none" }}>
+                <Link
+                  to="/trochoi/ghepthetam"
+                  style={{ textDecoration: "none" }}
+                >
                   <Card className="link-game">
                     <div className="img-game">
                       <img
+                        alt="students"
                         src={
                           require("../../assets/images/students-with-puzzles.png")
                             .default

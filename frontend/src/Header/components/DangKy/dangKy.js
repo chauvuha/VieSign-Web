@@ -96,7 +96,6 @@ function DangKy() {
     </React.Fragment>
   );
   const onSubmit = (data) => {
-    console.log(data);
     const info = {
       username: data.name,
       password: data.password,

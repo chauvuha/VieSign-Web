@@ -77,7 +77,6 @@ const Revision = ({ topic, nameTopic, setPart, part, amount }) => {
         });
 
         arr[0].disabled = false;
-        console.log(arr);
         setQuestionStatus(arr);
 
         const arr2 = listVid.map((item) => {

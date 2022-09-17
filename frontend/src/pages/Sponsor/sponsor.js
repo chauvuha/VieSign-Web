@@ -25,7 +25,7 @@ const TaiTro = () => {
                 className="p-button-about p-text-bold p-button-text"
                 onClick={() => { setActiveIndex1(0); }}
               >
-                <i class="pi pi-angle-right"></i>
+                <i className="pi pi-angle-right"></i>
                 <span className="txt">{t('sponsor-sidebar-one')}</span>
               </Button>
             </div>
@@ -34,7 +34,7 @@ const TaiTro = () => {
                 className="p-button-about p-text-bold p-button-text"
                 onClick={() => { setActiveIndex1(1); }}
               >
-                <i class="pi pi-angle-right"></i>
+                <i className="pi pi-angle-right"></i>
                 <span className="txt">{t('sponsor-sidebar-two')}</span>
               </Button>
             </div>
@@ -43,7 +43,7 @@ const TaiTro = () => {
                 className=" p-button-about p-text-bold p-button-text"
                 onClick={() => { setActiveIndex1(2); }}
               >
-                <i class="pi pi-angle-right"></i>
+                <i className="pi pi-angle-right"></i>
                 <span className="txt">{t('sponsor-sidebar-three')}</span>
               </Button>
             </div>
