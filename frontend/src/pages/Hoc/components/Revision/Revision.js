@@ -211,30 +211,57 @@ const Revision = ({ topic, nameTopic, setPart, part, amount }) => {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       let info;
+      let score = 0;
+      for (let item of questionStatus) {
+        if (
+          !item.disabled &&
+          (item.answer[0].isCorrect === 1 || item.answer[1].isCorrect === 1)
+        ) {
+          score += 10;
+        }
+      }
+      let userScore = [...user.score];
+
       if (part === 4) {
+        if (userScore.filter((item) => item.topic === topic).length === 0) {
+          userScore.push({ topic: topic, score: score });
+        } else {
+          let index = 0;
+          for (let i = 0; i < userScore.length; i++) {
+            if (userScore[i].topic === topic) {
+              index = i;
+            }
+          }
+          userScore[index].score = score;
+        }
         info = {
           _id: JSON.parse(window.localStorage.getItem("id")),
           topic: topic,
           part: user.part <= part ? part + 1 : user.part,
+          score: userScore,
         };
       }
-      if(part === 5) {
+      if (part === 5) {
+        let index = 0;
+        for (let i = 0; i < userScore.length; i++) {
+          if (userScore[i].topic === topic) {
+            index = i;
+          }
+        }
+        userScore[index].score += score;
         info = {
           _id: JSON.parse(window.localStorage.getItem("id")),
           topic: topic + 1,
           part: 1,
+          score: userScore,
         };
       }
       axios
-        .post(
-          `${config.APP_API}/user/update-user`,
-          JSON.stringify(info),
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
+        .post(`${config.APP_API}/user/update-user`, JSON.stringify(info), {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
         .then((res) => {
           console.log(res);
         });

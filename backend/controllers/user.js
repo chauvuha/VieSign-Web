@@ -20,7 +20,7 @@ exports.createUser = (req, res, next) => {
             address: null,
             zipcode: null,
             phone: null,
-            score: 0,
+            score: [],
             topic: 1,
             part: 1,
           });
@@ -95,35 +95,35 @@ exports.getUserById = (req, res, next) => {
 };
 
 exports.updateUser = (req, res, next) => {
-  if(req.body.password !== undefined) {
-     bcrypt.hash(req.body.password, 10).then((hash) => {
-       const user = new User({
-         _id: req.body._id,
-         username: req.body.username,
-         password: hash,
-         email: req.body.email,
-         dob: req.body.dob,
-         url: req.body.url,
-         country: req.body.country,
-         city: req.body.city,
-         address: req.body.address,
-         zipcode: req.body.zipcode,
-         phone: req.body.phone,
-         score: req.body.score,
-         topic: req.body.topic,
-         part: req.body.part,
-       });
+  if (req.body.password !== undefined) {
+    bcrypt.hash(req.body.password, 10).then((hash) => {
+      const user = new User({
+        _id: req.body._id,
+        username: req.body.username,
+        password: hash,
+        email: req.body.email,
+        dob: req.body.dob,
+        url: req.body.url,
+        country: req.body.country,
+        city: req.body.city,
+        address: req.body.address,
+        zipcode: req.body.zipcode,
+        phone: req.body.phone,
+        score: req.body.score,
+        topic: req.body.topic,
+        part: req.body.part,
+      });
 
-       User.updateOne({ _id: req.body._id }, user)
-         .then(() => {
-           res.status(200).json({
-             message: "update user sucessfully",
-           });
-         })
-         .catch((error) => {
-           res.status(400).json(error);
-         });
-     });
+      User.updateOne({ _id: req.body._id }, user)
+        .then(() => {
+          res.status(200).json({
+            message: "update user sucessfully",
+          });
+        })
+        .catch((error) => {
+          res.status(400).json(error);
+        });
+    });
   } else {
     const user = new User({
       _id: req.body._id,
@@ -150,7 +150,6 @@ exports.updateUser = (req, res, next) => {
         res.status(400).json(error);
       });
   }
- 
 };
 
 //Admnin

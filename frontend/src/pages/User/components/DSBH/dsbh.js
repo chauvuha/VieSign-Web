@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import "./dsbh.css";
 import { useState, useEffect } from "react";
 import { Button } from "primereact/button";
@@ -20,7 +21,7 @@ const DSBH = ({ topics }) => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [topics]);
 
   return (
     <div id="card1">
@@ -29,8 +30,7 @@ const DSBH = ({ topics }) => {
       </div>
       {topics
         .filter((_, index) => index + 1 <= user.topic)
-        .map((value) => {
-          console.log(value);
+        .map((value, idx) => {
           return (
             <div className="p-shadow-1" id="card-lesson-info">
               <div className="p-grid flexcard">
@@ -59,18 +59,27 @@ const DSBH = ({ topics }) => {
                   </div>
 
                   <div className="p-grid ">
-                    {/* <div className="p-col-2">
-                <Knob
-                  size="70"
-                  readOnly
-                  value={user.score !== undefined ? user.score : 0}
-                  valueColor={"#026670"}
-                />
-              </div> */}
+                    <div className="p-col-2">
+                      <Knob
+                        size="70"
+                        readOnly
+                        max={400}
+                        value={
+                          user.score.filter(
+                            (item) => item.topic === value.numberTopic
+                          ).length === 0
+                            ? 0
+                            : user.score.filter(
+                                (item) => item.topic === value.numberTopic
+                              )[0].score
+                        }
+                        valueColor={"#026670"}
+                      />
+                    </div>
 
-                    {/* <div className="p-col-5" id="process-user">
-                Số điểm hiện tại
-              </div> */}
+                    <div className="p-col-5" id="process-user">
+                      Số điểm hiện tại
+                    </div>
                     <div className="">
                       <Link to="/hoc" style={{ textDecoration: "none" }}>
                         <Button className="btn-user-learn">Học ngay</Button>

@@ -13,7 +13,12 @@ const userSchema = mongoose.Schema(
     address: { type: String, required: false },
     zipcode: { type: Number, required: false },
     phone: { type: String, required: false },
-    score: { type: Number, required: true },
+    score: [
+      {
+        topic: { type: Number, required: true },
+        score: { type: Number, required: true },
+      },
+    ],
     topic: { type: Number, required: true },
     part: { type: Number, required: true },
   },
