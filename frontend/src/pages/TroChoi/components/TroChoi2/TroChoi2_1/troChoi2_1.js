@@ -7,6 +7,7 @@ import { Button } from "primereact/button";
 import FlipGameContainers from "../components/FlipGameContainer";
 import axios from "axios";
 import config from "../../../../../config";
+import useWindowDimensions from "./useWindowDimensions";
 
 const RenderTime = ({ remainingTime }) => {
   const currentTime = useRef(remainingTime);
@@ -58,6 +59,7 @@ function TroChoi2_1({ topic, amount }) {
   const [cardList, setCardList] = useState([]);
 
   const navigate = useNavigate();
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     axios
@@ -74,9 +76,9 @@ function TroChoi2_1({ topic, amount }) {
           };
         });
 
-        let arr = []
+        let arr = [];
         for (let i = 0; i < amount; i++) {
-          arr.push(temp[i])
+          arr.push(temp[i]);
         }
         setCardList(arr);
       });
@@ -146,12 +148,15 @@ function TroChoi2_1({ topic, amount }) {
         }}
       >
         <p>
-          Hãy tìm ra đúng {amount} cặp thẻ có cùng ý nghĩa ký hiệu trong chỉ {amount * 0.5} phút.
-          Nếu hoàn thành thử thách này, bạn sẽ được thưởng {amount}0 điểm!
+          Hãy tìm ra đúng {amount} cặp thẻ có cùng ý nghĩa ký hiệu trong chỉ{" "}
+          {amount * 0.5} phút. Nếu hoàn thành thử thách này, bạn sẽ được thưởng{" "}
+          {amount}0 điểm!
         </p>
       </Dialog>
-      <div className="p-col-0 p-sm-1"></div>
-      <div className="p-col-12 p-sm-10">
+      <div
+        className={width >= 1536 || width <= 1155 ? "p-col-0 p-sm-1" : "p-col-0 p-sm-3"}
+      ></div>
+      <div className={width >= 1536 || width <= 1155 ? "p-col-12 p-sm-10" : "p-col-12 p-sm-7"}>
         <div className="p-grid" id="content-game2">
           <div className="p-col-7">
             <div className="p-grid point-game2">

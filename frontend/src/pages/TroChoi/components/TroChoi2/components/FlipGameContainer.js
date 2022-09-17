@@ -195,7 +195,6 @@ const FlipGameContainers = ({ cards, setScore, timesUp, score, setReload }) => {
           <p className="congra-score">{score}</p>
         </div>
       </Dialog>
-      ;
     </>
   );
 };
