@@ -15,21 +15,22 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Toast } from "primereact/toast";
 import config from "../../../config";
+import { ProgressSpinner } from "primereact/progressspinner";
 
 function DangNhap() {
   /*Dialog*/
   const toast = useRef(null);
   const [displayResponsive, setDisplayResponsive] = useState(false);
- 
+  const [displayForgotPass, setDisplayForgotPass] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const dialogFuncMap = {
-  
     displayResponsive: setDisplayResponsive,
+    displayForgotPass: setDisplayForgotPass,
   };
 
   const onClick = (name) => {
     dialogFuncMap[`${name}`](true);
-
   };
 
   const onHide = (name) => {
@@ -54,7 +55,6 @@ function DangNhap() {
       errors[name] && <small className="p-error">{errors[name].message}</small>
     );
   };
-
 
   const showSuccess = () => {
     toast.current.show({
@@ -94,6 +94,44 @@ function DangNhap() {
 
     onHide("displayResponsive");
     reset();
+  };
+  const onSubmitForgotPass = (data) => {
+    setIsLoading(true);
+    onHide("displayForgotPass");
+    axios
+      .post(`${config.APP_API}/user/forgot-password`, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        setIsLoading(false);
+        if (res.status === 200) {
+          toast.current.show({
+            severity: "success",
+            summary: "Thành công",
+            detail:
+              "Chúng tôi đã gửi đường dẫn đặt lại mật khẩu qua email của bạn, vui lòng click vào đường dẫn và đặt lại mật khẩu",
+            life: 10000,
+          });
+        } else {
+          toast.current.show({
+            severity: "error",
+            summary: "Thất bại",
+            detail: "Đã có lỗi xảy ra, hãy đảm bảo bạn nhập email đúng",
+            life: 5000,
+          });
+        }
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        toast.current.show({
+          severity: "error",
+          summary: "Thất bại",
+          detail: "Đã có lỗi xảy ra, hãy đảm bảo bạn nhập email đúng",
+          life: 5000,
+        });
+      });
   };
 
   return (
@@ -178,17 +216,87 @@ function DangNhap() {
                   <Button
                     type="submit"
                     label="Đăng Nhập"
-                    className="p-mt-2"
-                    className="btn-login"
+                    className="p-mt-2 btn-login"
                   />
-                  {/*
+
                   <div className="p-field">
-                    <div className="btnforget">Bạn quên mật khẩu</div>
-                  </div>*/}
+                    <div
+                      className="btnforget"
+                      onClick={() => {
+                        onClick("displayForgotPass");
+                        onHide("displayResponsive");
+                      }}
+                    >
+                      Bạn quên mật khẩu
+                    </div>
+                  </div>
                 </form>
               </div>
             </div>
           </div>
+        </Dialog>
+        <Dialog
+          header="Quên mật khẩu"
+          visible={displayForgotPass}
+          onHide={() => onHide("displayForgotPass")}
+          breakpoints={{ "960px": "75vw" }}
+          style={{ width: "50vw" }}
+        >
+          <div className="form-demo dangnhap-form">
+            <div className="p-d-flex p-jc-center">
+              <div className="card">
+                <form
+                  onSubmit={handleSubmit(onSubmitForgotPass)}
+                  className="p-fluid"
+                >
+                  <div className="p-field">
+                    <span className="p-float-label p-input-icon-right">
+                      <Controller
+                        name="email"
+                        control={control}
+                        rules={{
+                          required: "Email là bắt buộc.",
+                          pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                            message:
+                              "Địa chỉ email không hợp lệ. Ví dụ: example@email.com",
+                          },
+                        }}
+                        render={({ field, fieldState }) => (
+                          <InputText
+                            id={field.name}
+                            {...field}
+                            className={classNames({
+                              "p-invalid": fieldState.invalid,
+                            })}
+                          />
+                        )}
+                      />
+                      <label
+                        htmlFor="email"
+                        className={classNames({ "p-error": !!errors.email })}
+                      >
+                        Email*
+                      </label>
+                    </span>
+                    {getFormErrorMessage("email")}
+                  </div>
+                  <Button
+                    type="submit"
+                    label="Gửi đường dẫn đặt lại mật khẩu"
+                    className="p-mt-2 btn-login"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+        </Dialog>
+        <Dialog
+          visible={isLoading}
+          breakpoints={{ "960px": "75vw" }}
+          style={{ width: "50vw" }}
+        >
+          <ProgressSpinner />
         </Dialog>
       </div>
     </div>

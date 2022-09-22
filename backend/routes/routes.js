@@ -3,7 +3,6 @@ const router = express.Router();
 
 const userCtrl = require('../controllers/user');
 const videoCtrl = require('../controllers/video');
-const mailCtrl = require("../controllers/sendmail");
 
 router.post('/video/create-video', videoCtrl.createVideo);
 router.get('/video/list-topic',videoCtrl.getListTopic);
@@ -20,8 +19,8 @@ router.post("/user/login", userCtrl.login);
 router.get("/user/get-user-id", userCtrl.getUserById);
 router.post("/user/update-user", userCtrl.updateUser);
 router.get("/user/all-user", userCtrl.getAllUser);
+router.post("/user/forgot-password", userCtrl.forgotPassword)
+router.post("/user/reset-password", userCtrl.resetPassword)
 
-
-router.post("/send-mail", mailCtrl.sendMail);
 
 module.exports ={routes: router}

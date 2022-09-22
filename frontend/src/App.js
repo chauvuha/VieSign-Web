@@ -10,8 +10,8 @@ import Hoc from "./pages/Hoc/hoc";
 import TroChoi from "./pages/TroChoi/troChoi";
 import GiaoTiep from "./pages/GiaoTiep/giaoTiep";
 import TaiKhoanUser from "./pages/User/tkUser";
-import  TaiTro from  "./pages/Sponsor/sponsor"
-import  TaiTro2 from  "./pages/Sponsor2/sponsor"
+import TaiTro from "./pages/Sponsor/sponsor";
+import TaiTro2 from "./pages/Sponsor2/sponsor";
 import ThongTinUser from "./pages/User/components/ThongTinUser/ttUser";
 import DSBH from "./pages/User/components/DSBH/dsbh";
 import TroGiup from "./pages/User/components/TroGiup/troGiup";
@@ -27,14 +27,12 @@ import VideoText from "./pages/Hoc/components/VideoText/videoText";
 import TextVideo from "./pages/Hoc/components/TextVideo/textVideo";
 import axios from "axios";
 import config from "./config";
-import Support from "./pages/Support/support"
-
-
+import Support from "./pages/Support/support";
 
 function App() {
   const [user, setUser] = useState({});
   const [topics, setTopics] = useState([]);
-  const defaultTime = useRef(Date.now())
+  const defaultTime = useRef(Date.now());
 
   useEffect(() => {
     if (window.localStorage.getItem("id") !== null) {
@@ -53,8 +51,6 @@ function App() {
       setTopics(res.data.listTopic);
     });
   }, []);
-  
-
 
   return (
     <Router>
@@ -63,6 +59,7 @@ function App() {
         <Routes>
           <Route path="/admin" element={<TaiKhoanAdmin />}></Route>
           <Route path="/" element={<TrangChu />}></Route>
+          <Route path="/reset-password/:id" element={<TrangChu />} />
           <Route path="/thongtin" element={<ThongTin />}></Route>
           <Route path="/hoc" element={<Hoc topics={topics} />}></Route>
           <Route path="/understand" element={<Understand />}></Route>
@@ -84,15 +81,15 @@ function App() {
             element={<TaiKhoanUser user={user} topics={topics} />}
           ></Route>
           <Route path="/profile" element={<ThongTinUser user={user} />}></Route>
-          <Route
-            path="/dsbh"
-            element={<DSBH topics={topics} />}
-          ></Route>
+          <Route path="/dsbh" element={<DSBH topics={topics} />}></Route>
           <Route path="/trogiup" element={<TroGiup />}></Route>
           <Route
             path="/trochoi/gheptu"
             element={
-              <TroChoi1 topic={user.topic} timeLeft={defaultTime.current + 180000} />
+              <TroChoi1
+                topic={user.topic}
+                timeLeft={defaultTime.current + 180000}
+              />
             }
           ></Route>
           <Route

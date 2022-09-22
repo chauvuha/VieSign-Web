@@ -11,16 +11,22 @@ const DSBH = ({ topics }) => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
+    let isMounted = true;
     axios
       .get(`${config.APP_API}/user/get-user-id`, {
         params: { id: JSON.parse(window.localStorage.getItem("id")) },
       })
       .then((res) => {
-        setUser(res.data.user);
+        if (isMounted) {
+          setUser(res.data.user);
+        }
       })
       .catch((err) => {
         console.log(err);
       });
+    return () => {
+      isMounted = false;
+    };
   }, [topics]);
 
   return (
@@ -32,7 +38,7 @@ const DSBH = ({ topics }) => {
         .filter((_, index) => index + 1 <= user.topic)
         .map((value, idx) => {
           return (
-            <div className="p-shadow-1" id="card-lesson-info">
+            <div key={idx} className="p-shadow-1" id="card-lesson-info">
               <div className="p-grid flexcard">
                 <div className="p-col-4">
                   <img

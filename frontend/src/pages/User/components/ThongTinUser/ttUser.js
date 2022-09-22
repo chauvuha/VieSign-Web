@@ -118,7 +118,7 @@ function TTUser({ user }) {
                     chooseLabel="Đổi ảnh giao diện"
                   />
                   {/* {avatar !== "" && (
-                    <i class="pi pi-times" onClick={handleClearUpload} />
+                    <i className="pi pi-times" onClick={handleClearUpload} />
                   )} */}
                 </div>
               </div>
@@ -179,7 +179,7 @@ function TTUser({ user }) {
                 />
               </div>
               <div className="p-field p-col-12 p-md-6">
-                <label htmlFor="ngaysinh" id="txt-info-user" class>
+                <label htmlFor="ngaysinh" id="txt-info-user">
                   Ngày sinh
                 </label>
                 <div>

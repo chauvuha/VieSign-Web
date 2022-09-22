@@ -5,6 +5,7 @@
   border-color: #fff;
   font-style: italic;
   margin-top: 5px;
+  cursor: pointer;
 }
 
 .card-login .p-button.p-button-text.p-button-plain {
@@ -25,15 +26,14 @@ button.p-button.p-component.btn-login:hover {
   background-color: #fff;
 }
 
-
 .toast-demo button {
-    min-width: 10rem;
-    margin-right: .5rem;
+  min-width: 10rem;
+  margin-right: 0.5rem;
 }
 
 @media screen and (max-width: 960px) {
-    .toast-demo button {
-        width: 100%;
-        margin-bottom: .5rem;
-    }
+  .toast-demo button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
 }

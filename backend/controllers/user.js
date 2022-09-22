@@ -1,5 +1,7 @@
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
+const nodeMailer = require("nodemailer");
+const template = require("../utils/emailResetPass");
 
 exports.createUser = (req, res, next) => {
   User.find({ email: req.body.email })
@@ -152,7 +154,69 @@ exports.updateUser = (req, res, next) => {
   }
 };
 
-//Admnin
+exports.forgotPassword = async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.body.email });
+    const transporter = nodeMailer.createTransport({
+      // config mail serve
+      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      auth: {
+        user: "viesign.noreply@gmail.com",
+        pass: "ozefludmehigiaps",
+      },
+      from: "viesign.noreply@gmail.com",
+      tls: {
+        // do not fail on invalid certs
+        rejectUnauthorized: false,
+      },
+    });
+
+    const mainOptions = {
+      from: "viesign.noreply@gmail.com",
+      to: req.body.email,
+      subject: "Reset password",
+      text: "",
+      html: template(
+        req.body.email,
+        `http://localhost:3000/reset-password/${user._id.toString()}`
+      ),
+    };
+    transporter.sendMail(mainOptions, function (err, info) {
+      if (err) {
+        console.log(err);
+        res.status(500).json({ message: "Send mail failed!" });
+      } else {
+        console.log("Message sent: " + info.response);
+        res.status(200).json({ message: "Send mail success!" });
+      }
+    });
+  } catch (err) {
+    res.status(500).json({ message: err.toString() });
+  }
+};
+
+exports.resetPassword = (req, res) => {
+  try {
+    bcrypt.hash(req.body.password, 10).then((hash) => {
+      User.findOneAndUpdate({ _id: req.body.id }, { password: hash })
+        .then(() => {
+          res.status(200).json({
+            message: "update user sucessfully",
+          });
+        })
+        .catch((error) => {
+          res.status(400).json(error);
+        });
+    });
+  } catch (err) {
+    res.status(400).json(error);
+  }
+};
+
+//Admin
 exports.getAllUser = (req, res, next) => {
   User.find({}).then((users) => {
     res.status(200).json({

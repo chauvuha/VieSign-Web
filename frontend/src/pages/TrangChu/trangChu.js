@@ -15,7 +15,7 @@ function TrangChu() {
   return (
     <div className="main-body">
       <div className="main-first-top-picture p-grid">
-        <img className="p-col-12 p-sm-12" src={require('../../assets/images/banner.jpg').default} />
+        <img alt="img" className="p-col-12 p-sm-12" src={require('../../assets/images/banner.jpg').default} />
       </div>
       <div className="main-first-section vnmese p-grid cl-darkgreen bg-yellow pb-40">
         <div className="p-col-2"></div>
@@ -29,7 +29,7 @@ function TrangChu() {
 
       <div className="main-second-section p-grid p-30">
         <div className="p-col-12 p-sm-2"></div>
-        {/* <img className="p-col-6 p-30 p-sm-4" src={require('../../assets/images/connection.svg').default} /> */}
+        {/* <img alt="img" className="p-col-6 p-30 p-sm-4" src={require('../../assets/images/connection.svg').default} /> */}
         <video
           className="answer-video main-video p-col-6 p-30 p-sm-4"
           muted
@@ -56,7 +56,7 @@ function TrangChu() {
         <div className="p-col-12 p-sm-4 cl-darkgreen main-second-section-text fw-bold ">
           <h2 className="fs-lg fw-bold">{t('main-second-section-text-two')}</h2>
         </div>
-        <img className="p-col-6 p-sm-4 p-30" src={require('../../assets/images/game.svg').default} />
+        <img alt="img" className="p-col-6 p-sm-4 p-30" src={require('../../assets/images/game.svg').default} />
       </div>
       <div className="main-third-section p-grid bg-yellow cl-darkgreen pb-40">
         <div className="p-col-12">
@@ -67,7 +67,7 @@ function TrangChu() {
             <div className="team-members mb-20 p-grid">
               <div className="member p-col-12 p-sm-2">
                 <div className="member-photo-main">
-                  <img src={require('../../assets/images/duyuyen.jpg').default} />
+                  <img alt="img" src={require('../../assets/images/duyuyen.jpg').default} />
                 </div>
                 <div className="member-name-main">
                   Phan Bình Duy Uyên
@@ -78,7 +78,7 @@ function TrangChu() {
               </div>
               <div className="member p-col-12 p-sm-2">
                 <div className="member-photo-main">
-                  <img src={require('../../assets/images/vuhachau.jpg').default} />
+                  <img alt="img" src={require('../../assets/images/vuhachau.jpg').default} />
                 </div>
                 <div className="member-name-main">
                   Vũ Hà Châu
@@ -89,7 +89,7 @@ function TrangChu() {
               </div>
               <div className="member p-col-12 p-sm-2">
                 <div className="member-photo-main">
-                  <img src={require('../../assets/images/huynhviha.jpeg').default} />
+                  <img alt="img" src={require('../../assets/images/huynhviha.jpeg').default} />
                 </div>
                 <div className="member-name-main">
                   Huỳnh Vĩ Hà
@@ -100,7 +100,7 @@ function TrangChu() {
               </div>
               <div className="member p-col-12 p-sm-2">
                 <div className="member-photo-main">
-                <img src={require('../../assets/images/TranUy.png').default} />
+                <img alt="img" src={require('../../assets/images/TranUy.png').default} />
                 </div>
                 <div className="member-name-main">
                   Trần Khánh Gia Uy
@@ -115,7 +115,7 @@ function TrangChu() {
             <div className="team-members p-grid">
               <div className="member p-col-12 p-sm-2">
                 <div className="member-photo-main">
-                  <img src={require('../../assets/images/kimngan.png').default} />
+                  <img alt="img" src={require('../../assets/images/kimngan.png').default} />
                 </div>
                 <div className="member-name-main">
                   Nguyễn Ngọc Kim Ngân
@@ -126,7 +126,7 @@ function TrangChu() {
               </div>
               <div className="member p-col-12 p-sm-2">
                 <div className="member-photo-main">
-                  <img src={require('../../assets/images/ngocquy.jpg').default} />
+                  <img alt="img" src={require('../../assets/images/ngocquy.jpg').default} />
                 </div>
                 <div className="member-name-main">
                   Ngô Lê Ngọc Quý
@@ -143,7 +143,7 @@ function TrangChu() {
           <div className="team-members mb-20 p-grid">
             <div className="member p-col-12 p-sm-2">
               <div className="member-photo-main">
-                <img src={require('../../assets/images/ced/duongphuonghanh.png').default} />
+                <img alt="img" src={require('../../assets/images/ced/duongphuonghanh.png').default} />
               </div>
               <div className="member-name-main">
                 Dương Phương Hạnh
@@ -154,7 +154,7 @@ function TrangChu() {
             </div>
             <div className="member p-col-12 p-sm-2">
               <div className="member-photo-main">
-                <img src={require('../../assets/images/ced/tothibichphuong.png').default} />
+                <img alt="img" src={require('../../assets/images/ced/tothibichphuong.png').default} />
               </div>
               <div className="member-name-main">
                 Tô Thị Bích Phương
@@ -165,7 +165,7 @@ function TrangChu() {
             </div>
             <div className="member p-col-12 p-sm-2">
               <div className="member-photo-main">
-                <img src={require('../../assets/images/ced/buithingoc.jpg').default} />
+                <img alt="img" src={require('../../assets/images/ced/buithingoc.jpg').default} />
               </div>
               <div className="member-ced-four">
                 Bùi Thị Ngọc
@@ -178,7 +178,7 @@ function TrangChu() {
           <div className="team-members mb-20 p-grid">
             <div className="member p-col-12 p-sm-2">
               <div className="member-photo-main">
-                <img src={require('../../assets/images/ced/trieuthuymi.png').default} />
+                <img alt="img" src={require('../../assets/images/ced/trieuthuymi.png').default} />
               </div>
               <div className="member-name-main">
                 Triệu Thuý Mi
@@ -189,7 +189,7 @@ function TrangChu() {
             </div>
             <div className="member p-col-12 p-sm-2">
               <div className="member-photo-main">
-                <img src={require('../../assets/images/ced/phamthuyduong.jpg').default} />
+                <img alt="img" src={require('../../assets/images/ced/phamthuyduong.jpg').default} />
               </div>
               <div className="member-name-main">
                 Phạm Thùy Dương
@@ -200,7 +200,7 @@ function TrangChu() {
             </div>
             <div className="member p-col-12 p-sm-2">
               <div className="member-photo-main">
-                <img src={require('../../assets/images/ced/huakimhuong.png').default} />
+                <img alt="img" src={require('../../assets/images/ced/huakimhuong.png').default} />
               </div>
               <div className="member-name-main">
                 Hứa Kim Hương
@@ -217,7 +217,7 @@ function TrangChu() {
             <div className="team-members p-grid">
               <div className="member p-col-12 p-sm-2">
                 <div className="member-photo-main">
-                  <img src={require('../../assets/images/longtran.jpg').default} />
+                  <img alt="img" src={require('../../assets/images/longtran.jpg').default} />
                 </div>
                 <div className="member-name">
                   <div className="member-name-main">
@@ -230,7 +230,7 @@ function TrangChu() {
               </div>
               <div className="member p-col-12 p-sm-2">
                 <div className="member-photo-main">
-                  <img src={require('../../assets/images/vuthuytrang-main.png').default} />
+                  <img alt="img" src={require('../../assets/images/vuthuytrang-main.png').default} />
                 </div>
                 <div className="member-name">
                   <div className="member-name-main">
@@ -243,7 +243,7 @@ function TrangChu() {
               </div>
               <div className="member p-col-12 p-sm-2">
                 <div className="member-photo-main">
-                  <img src={require('../../assets/images/lemaithanhduc.jpeg').default} />
+                  <img alt="img" src={require('../../assets/images/lemaithanhduc.jpeg').default} />
                 </div>
                 <div className="member-name">
                   <div className="member-name-main">
@@ -263,7 +263,7 @@ function TrangChu() {
             <div className="team-members p-grid">
               <div className="member p-col-12 p-sm-2">
                 <div className="member-photo-main">
-                  <img src={require('../../assets/images/Khang.png').default} />
+                  <img alt="img" src={require('../../assets/images/Khang.png').default} />
                 </div>
                 <div className="member-name">
                   <div className="member-name-main">
@@ -276,7 +276,7 @@ function TrangChu() {
               </div>
               <div className="member p-col-12 p-sm-2">
                 <div className="member-photo-main">
-                  <img src={require('../../assets/images/tranthaihoa.jpg').default} />
+                  <img alt="img" src={require('../../assets/images/tranthaihoa.jpg').default} />
                 </div>
                 <div className="member-name">
                   <div className="member-name-main">
