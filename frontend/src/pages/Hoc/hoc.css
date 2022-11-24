@@ -1,51 +1,65 @@
 /*Chung ca trang Hoc*/
 
 .ta-left {
-    text-align: left;
+  text-align: left;
 }
 
 .learn-body {
-    margin-top: 70px;
-    padding: 20px;
+  margin-top: 70px;
+  padding: 20px;
 }
 
 .learn-body-line {
-    padding: 20px;
+  padding: 20px;
 }
 
 /*Learn body line within the whole page*/
 .learn-body-line button,
 .learn-body-line h2,
 .learn-body-line p {
-    border: none;
-    cursor: pointer;
-    transition: background 500ms ease;
-    transition: 0.5s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+  border: none;
+  cursor: pointer;
+  transition: background 500ms ease;
+  transition: 0.5s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
     0.5s box-shadow,
     0.5s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
 }
 
 .learn-body-line button {
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
-    border-radius: 5px;
-    background: white
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  background: white;
 }
 
 .learn-body-line button:hover {
-    background-color: #FCE181;
-    transform: scale(1.05);
+  background-color: #fce181;
+  transform: scale(1.05);
 }
 
 .learn-body-line {
-    margin-bottom: 70px;
+  margin-bottom: 70px;
 }
 
 /*Learn section within each line*/
 .learn-section p {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .learn-section {
-    padding: 20px;
-    margin: 10px;
+  padding: 20px;
+  margin: 10px;
 }
+
+.tabview-custom .p-tabview-panels {
+  background-color: #e5e5e5;
+}
+
+.active {
+  background-color: #e5e5e5 !important;
+  border-bottom: 4px solid #6366f1 !important;
+  border-radius: 0px !important;
+}
+
+/* .active:enabled:hover {
+
+} */

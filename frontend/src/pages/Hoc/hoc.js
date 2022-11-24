@@ -2,7 +2,10 @@ import "primereact/resources/themes/saga-blue/theme.css";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import "primereact/resources/primereact.min.css";
+import "primereact/resources/primereact.css";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "./hoc.css";
+import { TabView, TabPanel } from "primereact/tabview";
 import React, { Fragment } from "react";
 import { Button } from "primereact/button";
 import { useState, useEffect } from "react";
@@ -20,6 +23,7 @@ function Hoc({ topics }) {
   const [topic, setTopic] = useState(-1);
 
   const navigate = useNavigate();
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     axios
@@ -89,28 +93,131 @@ function Hoc({ topics }) {
               <h1 className="p-col-8 ta-left fw-bold"> CÁC CHỦ ĐỀ CỦA BẠN </h1>
               <div className=" p-col-2"></div>
             </div>
-            <div className="learn-body-line p-grid">
-              <div className=" p-col-12 p-sm-2"></div>
-              {topics.map((item, index) => (
-                <Fragment key={index}>
-                  <button
-                    className="learn-section p-col-12 p-sm-2"
-                    onClick={() => setTopic(index + 1)}
-                  >
-                    <img
-                      alt="online"
-                      width="100%"
-                      src={require("../../assets/images/online.svg").default}
-                      className="img"
-                    />
-                    <h2 className="ta-left">Chủ đề {index + 1}</h2>
-                    <p className="ta-left">{item.nameTopic}</p>
-                    <div />
-                  </button>
-                  {index % 4 === 3 && <div className="p-col-12 p-sm-2"></div>}
-                </Fragment>
-              ))}
-            </div>
+            <Button
+              label="Cơ bản"
+              id="btn-footer"
+              className={activeIndex === 0 ? "active" : ""}
+              onClick={() => setActiveIndex(0)}
+            />
+            <Button
+              label="Y tế"
+              id="btn-footer"
+              className={activeIndex === 1 ? "active" : ""}
+              onClick={() => setActiveIndex(1)}
+            />
+            <Button
+              label="Luật"
+              id="btn-footer"
+              className={activeIndex === 2 ? "active" : ""}
+              onClick={() => setActiveIndex(2)}
+            />
+            <TabView
+              activeIndex={activeIndex}
+              onTabChange={(e) => setActiveIndex(e.index)}
+              className="tabview-custom"
+            >
+              <TabPanel
+                header="Cơ bản"
+                contentStyle={{ backgroundColor: "#E5E5E5" }}
+                headerStyle={{ backgroundColor: "#E5E5E5" }}
+              >
+                <h3>Cơ bản</h3>
+                <div className="learn-body-line p-grid">
+                  <div className=" p-col-12 p-sm-2"></div>
+                  {topics
+                    .filter(
+                      (topic) =>
+                        !topic.nameTopic.includes("Y tế") &&
+                        !topic.nameTopic.includes("Luật")
+                    )
+                    .map((item, index) => (
+                      <Fragment key={index}>
+                        <button
+                          className="learn-section p-col-12 p-sm-2"
+                          onClick={() => setTopic(index + 1)}
+                        >
+                          <img
+                            alt="online"
+                            width="100%"
+                            src={
+                              require("../../assets/images/online.svg").default
+                            }
+                            className="img"
+                          />
+                          <h2 className="ta-left">Chủ đề {index + 1}</h2>
+                          <p className="ta-left">{item.nameTopic}</p>
+                          <div />
+                        </button>
+                        {index % 4 === 3 && (
+                          <div className="p-col-12 p-sm-2"></div>
+                        )}
+                      </Fragment>
+                    ))}
+                </div>
+              </TabPanel>
+              <TabPanel header="Y tế">
+                <h3>Y tế</h3>
+                <div className="learn-body-line p-grid">
+                  <div className=" p-col-12 p-sm-2"></div>
+                  {topics
+                    .filter((topic) => topic.nameTopic.includes("Y tế"))
+                    .map((item, index) => (
+                      <Fragment key={index}>
+                        <button
+                          className="learn-section p-col-12 p-sm-2"
+                          onClick={() => setTopic(index + 1)}
+                        >
+                          <img
+                            alt="online"
+                            width="100%"
+                            src={
+                              require("../../assets/images/online.svg").default
+                            }
+                            className="img"
+                          />
+                          <h2 className="ta-left">Chủ đề {index + 1}</h2>
+                          <p className="ta-left">{item.nameTopic}</p>
+                          <div />
+                        </button>
+                        {index % 4 === 3 && (
+                          <div className="p-col-12 p-sm-2"></div>
+                        )}
+                      </Fragment>
+                    ))}
+                </div>
+              </TabPanel>
+              <TabPanel header="Luật">
+                <h3>Luật</h3>
+                <div className="learn-body-line p-grid">
+                  <div className=" p-col-12 p-sm-2"></div>
+                  {topics
+                    .filter((topic) => topic.nameTopic.includes("Luật"))
+                    .map((item, index) => (
+                      <Fragment key={index}>
+                        <button
+                          className="learn-section p-col-12 p-sm-2"
+                          onClick={() => setTopic(index + 1)}
+                        >
+                          <img
+                            alt="online"
+                            width="100%"
+                            src={
+                              require("../../assets/images/online.svg").default
+                            }
+                            className="img"
+                          />
+                          <h2 className="ta-left">Chủ đề {index + 1}</h2>
+                          <p className="ta-left">{item.nameTopic}</p>
+                          <div />
+                        </button>
+                        {index % 4 === 3 && (
+                          <div className="p-col-12 p-sm-2"></div>
+                        )}
+                      </Fragment>
+                    ))}
+                </div>
+              </TabPanel>
+            </TabView>
           </div>
         </>
       )}

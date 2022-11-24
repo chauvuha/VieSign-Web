@@ -110,8 +110,9 @@ function DangNhap() {
           toast.current.show({
             severity: "success",
             summary: "Thành công",
-            detail:
-              "Chúng tôi đã gửi đường dẫn đặt lại mật khẩu qua email của bạn, vui lòng click vào đường dẫn và đặt lại mật khẩu",
+            detail: `Chúng tôi đã gửi đường dẫn đặt lại mật khẩu qua email của bạn, 
+            vui lòng click vào đường dẫn và đặt lại mật khẩu. 
+            Hãy kiểm tra trong phần spam nếu bạn không thấy email`,
             life: 10000,
           });
         } else {
