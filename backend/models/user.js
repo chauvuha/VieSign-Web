@@ -19,7 +19,7 @@ const userSchema = mongoose.Schema(
         score: { type: Number, required: true },
       },
     ],
-    topic: { type: Number, required: true },
+    topic: { type: Array, required: true },
     part: { type: Number, required: true },
   },
   { versionKey: false }

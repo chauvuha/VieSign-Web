@@ -133,21 +133,19 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
       setQuestionStatus(arr);
       setCurrentQuestion(currentQuestion + 1);
     } else {
+      const listTopic = [...new Set([...user.topic, topic])];
       const info = {
         _id: JSON.parse(window.localStorage.getItem("id")),
-        topic: topic,
-        part: user.part <= part ? part + 1: user.part,
+        topic: listTopic,
+        part: user.part <= part ? part + 1 : user.part,
       };
+
       axios
-        .post(
-          `${config.APP_API}/user/update-user`,
-          JSON.stringify(info),
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
+        .post(`${config.APP_API}/user/update-user`, JSON.stringify(info), {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
         .then((res) => {
           console.log(res);
         });
@@ -232,7 +230,8 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
           <div className="p-col-0 p-sm-1"></div>
         </div>
       )}
-      <Dialog className="dialog-complete"
+      <Dialog
+        className="dialog-complete"
         header="Thông báo"
         visible={displayNextPart}
         style={{ width: "50vw" }}

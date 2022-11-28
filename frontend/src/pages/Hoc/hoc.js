@@ -25,20 +25,20 @@ function Hoc({ topics }) {
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
 
-  useEffect(() => {
-    axios
-      .get(`${config.APP_API}/user/get-user-id`, {
-        params: { id: JSON.parse(window.localStorage.getItem("id")) },
-      })
-      .then((res) => {
-        if (res.data.user.topic < topic) {
-          setDisplayBasic2(true);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [topic]);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${config.APP_API}/user/get-user-id`, {
+  //       params: { id: JSON.parse(window.localStorage.getItem("id")) },
+  //     })
+  //     .then((res) => {
+  //       if (res.data.user.topic < topic) {
+  //         setDisplayBasic2(true);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, [topic]);
 
   const dialogFuncMap = {
     displayBasic: setDisplayBasic,

@@ -35,7 +35,7 @@ const DSBH = ({ topics }) => {
         <span>Danh sách bài học</span>
       </div>
       {topics
-        .filter((_, index) => index + 1 <= user.topic)
+        .filter((topic) => user?.topic?.includes(topic?.numberTopic))
         .map((value, idx) => {
           return (
             <div key={idx} className="p-shadow-1" id="card-lesson-info">
@@ -58,10 +58,10 @@ const DSBH = ({ topics }) => {
                         )[0]?.nameTopic
                       }
                     </p>
-                    <p>
+                    {/* <p>
                       Bài học hiện tại:{" "}
                       {user.topic > value.numberTopic ? 5 : user.part}
-                    </p>
+                    </p> */}
                   </div>
 
                   <div className="p-grid ">

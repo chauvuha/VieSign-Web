@@ -23,7 +23,7 @@ exports.createUser = (req, res, next) => {
             zipcode: null,
             phone: null,
             score: [],
-            topic: 1,
+            topic: [1],
             part: 1,
           });
 
