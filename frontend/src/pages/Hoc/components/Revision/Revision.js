@@ -17,15 +17,6 @@ import { topic1 } from "../../../../constants/constants";
 import { getShuffledArr } from "../../../../helper/getSuffledArr";
 import config from "../../../../config";
 
-// const getShuffledArr = (arr) => {
-//   const newArr = arr.slice();
-//   for (let i = newArr.length - 1; i > 0; i--) {
-//     const rand = Math.floor(Math.random() * (i + 1));
-//     [newArr[i], newArr[rand]] = [newArr[rand], newArr[i]];
-//   }
-//   return newArr;
-// };
-
 const Revision = ({ topic, nameTopic, setPart, part, amount }) => {
   // Dialog
   const [displayBasic, setDisplayBasic] = useState(true);

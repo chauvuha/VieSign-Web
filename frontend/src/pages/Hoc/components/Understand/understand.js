@@ -5,23 +5,36 @@ import "primereact/resources/primereact.min.css";
 import { Button } from "primereact/button";
 import "../../tracNghiem.css";
 import { Card } from "primereact/card";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { VirtualScroller } from "primereact/virtualscroller";
 import { classNames } from "primereact/utils";
-import { Skeleton } from "primereact/skeleton";
 import { Dialog } from "primereact/dialog";
+import { getShuffledArr } from "../../../../helper/getSuffledArr";
 import axios from "axios";
 import config from "../../../../config";
+import TextVideo from "../TextVideo/textVideo";
+import VideoText from "../VideoText/videoText";
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function getRandomItem(items) {
+  return items[Math.floor(Math.random() * items.length)];
+}
 
 const Understand = ({ topic, nameTopic, setPart, part }) => {
   // Dialog
   const [displayBasic, setDisplayBasic] = useState(true);
+  const [displayQuickQuestion, setDisplayQuickQuestion] = useState(false);
   const [displayNextPart, setDisplayNextPart] = useState(false);
   const [visible, setVisible] = useState(false);
   const [videos, setVideos] = useState([]);
   const [questionStatus, setQuestionStatus] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(1);
-  const [user, setUser] = useState({});
+  const [listAnswer, setListAnswer] = useState([]);
+  const randQuestion = useRef();
+  const randNumber = useRef(getRandomInt(2));
 
   useEffect(() => {
     axios
@@ -37,18 +50,47 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
         arr[0] = false;
         setQuestionStatus(arr);
       });
+  }, [part, topic]);
 
-    axios
-      .get(`${config.APP_API}/user/get-user-id`, {
-        params: { id: JSON.parse(window.localStorage.getItem("id")) },
-      })
-      .then((res) => {
-        setUser(res.data.user);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  useEffect(() => {
+    if (
+      currentQuestion % 3 === 0 &&
+      questionStatus.filter((item) => !item).length === currentQuestion
+    ) {
+      randNumber.current = getRandomInt(2);
+      setDisplayQuickQuestion(true);
+      randQuestion.current = getRandomInt(currentQuestion - 1);
+      let arr = [
+        {
+          content: videos[randQuestion.current].content,
+          url: videos[randQuestion.current].url,
+          isCorrect: -1,
+        },
+        {
+          content:
+            videos[
+              getRandomItem(
+                Array.from({ length: currentQuestion }, (_, i) => i).filter(
+                  (i) => i !== randQuestion.current
+                )
+              )
+            ].content,
+          url: videos[
+            getRandomItem(
+              Array.from({ length: videos.length }, (_, i) => i).filter(
+                (i) => i !== randQuestion.current
+              )
+            )
+          ].url,
+          isCorrect: -1,
+        },
+      ];
+      const arrShuffled = getShuffledArr(arr);
+      setListAnswer(arrShuffled);
+    } else {
+      setDisplayQuickQuestion(false);
+    }
+  }, [currentQuestion, videos]);
 
   //Thanh scroll on the right
   const handleClickQuestion = (index) => {
@@ -86,6 +128,7 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
   const dialogFuncMap = {
     displayBasic: setDisplayBasic,
     displayNextPart: setDisplayNextPart,
+    displayQuickQuestion: setDisplayQuickQuestion,
   };
 
   const onHide = (name) => {
@@ -133,22 +176,22 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
       setQuestionStatus(arr);
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      const listTopic = [...new Set([...user.topic, topic])];
-      const info = {
-        _id: JSON.parse(window.localStorage.getItem("id")),
-        topic: listTopic,
-        part: user.part <= part ? part + 1 : user.part,
-      };
+      // const listTopic = [...new Set([...user.topic, topic])];
+      // const info = {
+      //   _id: JSON.parse(window.localStorage.getItem("id")),
+      //   topic: listTopic,
+      //   part: user.part <= part ? part + 1 : user.part,
+      // };
 
-      axios
-        .post(`${config.APP_API}/user/update-user`, JSON.stringify(info), {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          console.log(res);
-        });
+      // axios
+      //   .post(`${config.APP_API}/user/update-user`, JSON.stringify(info), {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //   })
+      //   .then((res) => {
+      //     console.log(res);
+      //   });
       setDisplayNextPart(true);
     }
   };
@@ -162,6 +205,39 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
       />
     </span>
   );
+
+  //set câu trả lời cho dạng text video và video text
+  const setAnswerLeft = () => {
+    let arr = [...listAnswer];
+    if (listAnswer[0].content === videos[randQuestion.current].content) {
+      arr[0] = {
+        ...arr[0],
+        isCorrect: 1,
+      };
+    } else {
+      arr[0] = {
+        ...arr[0],
+        isCorrect: 0,
+      };
+    }
+    setListAnswer(arr);
+  };
+
+  const setAnswerRight = () => {
+    let arr = [...listAnswer];
+    if (listAnswer[1].content === videos[randQuestion.current].content) {
+      arr[1] = {
+        ...arr[1],
+        isCorrect: 1,
+      };
+    } else {
+      arr[1] = {
+        ...arr[1],
+        isCorrect: 0,
+      };
+    }
+    setListAnswer(arr);
+  };
 
   return (
     <>
@@ -185,13 +261,42 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
         <p>1. 8 từ vựng thể hiện cảm xúc</p>
         <p>2. Bài tập đan xen ôn tập 8 từ vựng</p>
       </Dialog>
+
+      <Dialog
+        header="Câu hỏi nhanh"
+        visible={displayQuickQuestion}
+        style={{ width: "40vw" }}
+        footer={null}
+        onHide={() => onHide("displayQuickQuestion")}
+      >
+        {randNumber.current === 0 ? (
+          <TextVideo
+            answer={listAnswer}
+            setAnswerLeft={setAnswerLeft}
+            setAnswerRight={setAnswerRight}
+            content={videos[randQuestion.current]?.content}
+          />
+        ) : (
+          <VideoText
+            answer={listAnswer}
+            setAnswerLeft={setAnswerLeft}
+            setAnswerRight={setAnswerRight}
+            url={videos[randQuestion.current]?.url}
+          />
+        )}
+      </Dialog>
+
       {visible && (
         <div className="tracnghiem-body p-grid">
           <div className="p-col-0 p-sm-2"></div>
           <div className="learn-card p-col-12 p-sm-6">
             <Card footer={footer}>
               <video
-                className="question-video"
+                className={
+                  displayQuickQuestion
+                    ? "question-video-hide"
+                    : "question-video"
+                }
                 muted
                 autoPlay
                 loop

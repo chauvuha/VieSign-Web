@@ -1,240 +1,247 @@
 /*Chung ca trang trac nghiem*/
 .tracnghiem-body {
-    margin-top: 10px;
-    margin-bottom: 50px;
-    padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  padding: 20px;
 }
 
 /*Phan video hien thi ben trai*/
 video.question-video {
-    width: 80%;
+  width: 80%;
+  display: unset;
+}
+
+video.question-video-hide {
+  display: none;
 }
 
 .learn-card .p-card {
-    padding-right: 20px;
-    padding-left: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
 }
 
 .learn-card-sidebar .p-card {
-    height: 100%;
-    border-radius: 10px;
+  height: 100%;
+  border-radius: 10px;
 }
 
 .learn-card .p-card-body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .learn-card .p-card-body .p-card-content {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
 .p-card-body .p-card-footer {
-    display: flex;
-    justify-content: flex-end;
-    border-top: 2px solid rgb(202, 201, 201);
+  display: flex;
+  justify-content: flex-end;
+  border-top: 2px solid rgb(202, 201, 201);
 }
 
 .understand-btn {
-    background: #026667;
-    border: none;
-    border: 2px solid #026667;
+  background: #026667;
+  border: none;
+  border: 2px solid #026667;
 }
 
 .understand-btn:hover {
-    background: white !important;
-    color: #026667 !important;
-    border: 2px solid #026667 !important;
+  background: white !important;
+  color: #026667 !important;
+  border: 2px solid #026667 !important;
 }
 
 .card-question-title {
-    margin-bottom: 40px;
-    font-weight: bold;
+  margin-bottom: 40px;
+  font-weight: bold;
 }
 
 .question-text {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .answer,
 .answer-correct,
 .answer-incorrect {
-    margin-top: 18px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .answer h2 {
-    font-size: 28px;
+  font-size: 28px;
 }
 
 .answer-understand {
-    font-weight: bold;
-    margin-top: 18px;
+  font-weight: bold;
+  margin-top: 18px;
 }
 
 .answer video,
 .answer-correct video,
 .answer-incorrect video {
-    width: 80%;
+  width: 80%;
 }
 
 .answer button {
-    border: none;
-    background: #FCE181;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    margin: 10px;
-    width: 80%;
-    border: 2px solid #0D8A9C;
-    transition: background 500ms ease;
-    transition: 0.5s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+  border: none;
+  background: #fce181;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+  width: 80%;
+  border: 2px solid #0d8a9c;
+  transition: background 500ms ease;
+  transition: 0.5s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
     0.5s box-shadow,
     0.5s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
 }
 
 .answer button:hover {
-    background: white;
-    transition: background 500ms ease;
+  background: white;
+  transition: background 500ms ease;
 }
 
 .answer button h2 {
-    font-weight: bold;
-    color: #0D8A9C;
-    font-size: 28px;
+  font-weight: bold;
+  color: #0d8a9c;
+  font-size: 28px;
 }
 
 .answer-correct button h2,
 .answer-incorrect button h2 {
-    font-weight: bold;
-    color: white;
-    font-size: 28px;
+  font-weight: bold;
+  color: white;
+  font-size: 28px;
 }
 
 .answer button h2:hover {
-    cursor: pointer;
-    color: #0D8A9C;
+  cursor: pointer;
+  color: #0d8a9c;
 }
 
 /*Thanh scroll so cai ben phai*/
 .p-virtualscroller {
-    height: 480px;
-    padding: 20px;
+  height: 480px;
+  padding: 20px;
 }
 
 .learn-card-sidebar-header {
-    border-bottom: 2px solid rgb(202, 201, 201);
+  border-bottom: 2px solid rgb(202, 201, 201);
 }
 
 .learn-card-sidebar-header h2 {
-    font-weight: bold;;
+  font-weight: bold;
 }
 
 .learn-card-sidebar .p-card-body .p-card-content {
-    padding: 20px;
+  padding: 20px;
 }
 
 .learn-card-sidebar.p-col-12.p-sm-3 {
-    padding: 8px ;
+  padding: 8px;
 }
 
 .scroll-item-learn {
-    width: 100% ;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    background-color: white;
-    color: #026667;
-    border: 2px solid white;
-    margin-top: 10px;
-    border-radius: 30px;
-    font-weight: bold;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  color: #026667;
+  border: 2px solid white;
+  margin-top: 10px;
+  border-radius: 30px;
+  font-weight: bold;
 }
 
 .scroll-item-learn:hover {
-    border: 2px solid #026667 !important;
-    background: white !important;
-    color: #026667 !important
+  border: 2px solid #026667 !important;
+  background: white !important;
+  color: #026667 !important;
 }
 
 .scroll-item-learn.current {
-    box-shadow: none;
-    background: #026667;
-    color: white
+  box-shadow: none;
+  background: #026667;
+  color: white;
 }
 
 Button:focus:not(:focus-visible).scroll-item-learn {
-    box-shadow: none;
-    background: #026667;
-    color: white
+  box-shadow: none;
+  background: #026667;
+  color: white;
 }
 
-Button:focus:not(:focus-visible).scroll-item-learn .p-button-icon, .p-checkbox-box, .p-checkbox-icon {
-    color: white
+Button:focus:not(:focus-visible).scroll-item-learn .p-button-icon,
+.p-checkbox-box,
+.p-checkbox-icon {
+  color: white;
 }
 
 span.p-button-icon.p-c.pi.pi-caret-right {
-    margin-right: 86px;
+  margin-right: 86px;
 }
 
 @media screen and (max-width: 826px) {
-    .learn-card .p-card {
-        padding-top: 10px;
-    }
+  .learn-card .p-card {
+    padding-top: 10px;
+  }
 
-    .understand-btn {
-        padding: 6px 12px  !important;
-    }
+  .understand-btn {
+    padding: 6px 12px !important;
+  }
 }
 
-/* Dialog */ 
+/* Dialog */
 .p-dialog-title,
 .p-dialog-content {
-    text-align: center;
-    color: #026667 !important;
-    font-size: 20px !important;
+  text-align: center;
+  color: #026667 !important;
+  font-size: 20px !important;
 }
 
 .answer-correct button {
-    border: none;
-    background: #16c95b;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    margin: 10px;
-    width: 80%;
-    border: 2px solid #0D8A9C;
-    transition: background 500ms ease;
-    transition: 0.5s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+  border: none;
+  background: #16c95b;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+  width: 80%;
+  border: 2px solid #0d8a9c;
+  transition: background 500ms ease;
+  transition: 0.5s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
     0.5s box-shadow,
     0.5s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
 }
 
 .answer-incorrect button {
-    border: none;
-    background: #d80c0c;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    margin: 10px;
-    width: 80%;
-    border: 2px solid #0D8A9C;
-    transition: background 500ms ease;
-    transition: 0.5s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+  border: none;
+  background: #d80c0c;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+  width: 80%;
+  border: 2px solid #0d8a9c;
+  transition: background 500ms ease;
+  transition: 0.5s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
     0.5s box-shadow,
     0.5s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
 }
