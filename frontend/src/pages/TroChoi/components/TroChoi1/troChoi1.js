@@ -3,7 +3,6 @@ import React, {
   useState,
   useEffect,
   Fragment,
-  useCallback,
   useRef,
 } from "react";
 import { Button } from "primereact/button";
@@ -33,7 +32,7 @@ function TroChoi1({ topic, timeLeft }) {
   const [reload, setReload] = useState(false);
 
   const navigate = useNavigate();
-  const listQuestion = allTopic.map((item) => item.question);
+  const listQuestion = allTopic.map((item) => item.listQuestion).flat().map((item) => item.question);
   const dialogFuncMap = {
     displayBasic: setDisplayBasic,
     displayBasicPU: setdisplayBasicPU,
@@ -79,7 +78,7 @@ function TroChoi1({ topic, timeLeft }) {
         const arr2 = listVid.map((item) => {
           let listContent = [];
           let wrongContent = "";
-          for (let value of allTopic) {
+          for (let value of allTopic.map(item => item.listQuestion).flat()) {
             if (value.question === item.content) {
               listContent = value.answer;
             } else {

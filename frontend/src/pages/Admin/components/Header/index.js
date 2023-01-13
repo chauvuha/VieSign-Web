@@ -15,7 +15,10 @@ import axios from "axios";
 function Header({
   setTableVideoVisible,
   setTableUserVisible,
+  setTableQuestionVisible,
   setFormVideoVisible,
+  setFormQuestionVisible,
+  setRowData,
 }) {
   const navigate = useNavigate();
 
@@ -28,7 +31,10 @@ function Header({
       command: () => {
         setTableVideoVisible(true);
         setTableUserVisible(false);
+        setTableQuestionVisible(false);
         setFormVideoVisible(false);
+        setFormQuestionVisible(false);
+        setRowData({});
       },
     },
     {
@@ -37,7 +43,22 @@ function Header({
       command: () => {
         setTableVideoVisible(false);
         setTableUserVisible(true);
+        setTableQuestionVisible(false);
         setFormVideoVisible(false);
+        setFormQuestionVisible(false);
+        setRowData({});
+      },
+    },
+    {
+      label: "Danh sách câu hỏi",
+      activeIndex: 3,
+      command: () => {
+        setTableVideoVisible(false);
+        setTableUserVisible(false);
+        setTableQuestionVisible(true);
+        setFormVideoVisible(false);
+        setFormQuestionVisible(false);
+        setRowData({});
       },
     },
   ];

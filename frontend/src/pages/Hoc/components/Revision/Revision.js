@@ -13,7 +13,7 @@ import axios from "axios";
 import TextVideo from "../TextVideo/textVideo";
 import VideoText from "../VideoText/videoText";
 import VideoVideo from "../VideoVideo/videoVideo";
-import { topic1 } from "../../../../constants/constants";
+import { allTopic } from "../../../../constants/constants";
 import { getShuffledArr } from "../../../../helper/getSuffledArr";
 import config from "../../../../config";
 
@@ -28,8 +28,9 @@ const Revision = ({ topic, nameTopic, setPart, part, amount }) => {
   const [questionVid, setQuestionVid] = useState([]);
   const [user, setUser] = useState({});
 
-  const listQuestion = topic1.map((item) => item.question);
-
+  const listQuestion = allTopic
+    .find((item) => item.topic === topic)
+    .listQuestion.map((item) => item.question);
   useEffect(() => {
     axios
       .get(`${config.APP_API}/video/all-video`, {
@@ -73,7 +74,7 @@ const Revision = ({ topic, nameTopic, setPart, part, amount }) => {
         const arr2 = listVid.map((item) => {
           let listContent = [];
           let wrongContent = "";
-          for (let value of topic1) {
+          for (let value of allTopic.find((item) => item.topic === topic).listQuestion) {
             if (value.question === item.content) {
               listContent = value.answer;
             } else {
