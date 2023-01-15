@@ -306,7 +306,7 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
               >
                 <source
                   src={`https://drive.google.com/uc?export=download&id=${
-                    videos[currentQuestion - 1].url
+                    videos[currentQuestion - 1]?.url
                   }`}
                   type="video/mp4"
                 />

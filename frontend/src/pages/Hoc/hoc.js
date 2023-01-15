@@ -134,7 +134,7 @@ function Hoc({ topics }) {
                       <Fragment key={index}>
                         <button
                           className="learn-section p-col-12 p-sm-2"
-                          onClick={() => setTopic(index + 1)}
+                          onClick={() => setTopic(item?.numberTopic)}
                         >
                           <img
                             alt="online"
@@ -165,7 +165,7 @@ function Hoc({ topics }) {
                       <Fragment key={index}>
                         <button
                           className="learn-section p-col-12 p-sm-2"
-                          onClick={() => setTopic(index + 1)}
+                          onClick={() => setTopic(item?.numberTopic)}
                         >
                           <img
                             alt="online"
@@ -196,7 +196,7 @@ function Hoc({ topics }) {
                       <Fragment key={index}>
                         <button
                           className="learn-section p-col-12 p-sm-2"
-                          onClick={() => setTopic(index + 1)}
+                          onClick={() => setTopic(item?.numberTopic)}
                         >
                           <img
                             alt="online"
