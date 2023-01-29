@@ -62,7 +62,7 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
       randQuestion.current = getRandomInt(currentQuestion - 1);
       let arr = [
         {
-          content: videos[randQuestion.current].content,
+          content: videos[randQuestion.current]?.content,
           url: videos[randQuestion.current]?.url,
           isCorrect: -1,
         },
@@ -74,7 +74,7 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
                   (i) => i !== randQuestion.current
                 )
               )
-            ].content,
+            ]?.content,
           url: videos[
             getRandomItem(
               Array.from({ length: videos.length }, (_, i) => i).filter(
@@ -209,7 +209,7 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
   //set câu trả lời cho dạng text video và video text
   const setAnswerLeft = () => {
     let arr = [...listAnswer];
-    if (listAnswer[0].content === videos[randQuestion.current].content) {
+    if (listAnswer[0]?.content === videos[randQuestion.current]?.content) {
       arr[0] = {
         ...arr[0],
         isCorrect: 1,
@@ -225,7 +225,7 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
 
   const setAnswerRight = () => {
     let arr = [...listAnswer];
-    if (listAnswer[1].content === videos[randQuestion.current].content) {
+    if (listAnswer[1]?.content === videos[randQuestion.current]?.content) {
       arr[1] = {
         ...arr[1],
         isCorrect: 1,
@@ -315,7 +315,7 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
                 className="answer-understand cl-darkgreen"
                 style={{ lineHeight: "" }}
               >
-                {videos[currentQuestion - 1].content}
+                {videos[currentQuestion - 1]?.content}
               </h2>
             </Card>
           </div>
