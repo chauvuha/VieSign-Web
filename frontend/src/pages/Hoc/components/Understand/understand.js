@@ -63,7 +63,7 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
       let arr = [
         {
           content: videos[randQuestion.current].content,
-          url: videos[randQuestion.current].url,
+          url: videos[randQuestion.current]?.url,
           isCorrect: -1,
         },
         {
@@ -81,7 +81,7 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
                 (i) => i !== randQuestion.current
               )
             )
-          ].url,
+          ]?.url,
           isCorrect: -1,
         },
       ];
@@ -302,7 +302,7 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
                 loop
                 disablePictureInPicture
                 playsInline
-                key={videos[currentQuestion - 1].url}
+                key={videos[currentQuestion - 1]?.url}
               >
                 <source
                   src={`https://drive.google.com/uc?export=download&id=${
