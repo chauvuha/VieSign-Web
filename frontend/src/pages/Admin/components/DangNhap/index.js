@@ -145,12 +145,8 @@ function DangNhap({ setUser }) {
                 <Button
                   type="submit"
                   label="Đăng Nhập"
-                  className="p-mt-2"
-                  className="btn-login"
+                  className="p-mt-2 btn-login"
                 />
-                <div className="p-field">
-                  <div className="btnforget">Bạn quên mật khẩu</div>
-                </div>
               </form>
             </div>
           </div>

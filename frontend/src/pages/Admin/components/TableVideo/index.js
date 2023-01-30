@@ -21,14 +21,14 @@ const TableVideo = ({
   const [pageInputTooltip, setPageInputTooltip] = useState(
     "Press 'Enter' key to go to this page."
   );
-  const [reload, setReload] = useState(false)
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(`${config.APP_API}/video/all-video-no-topic`)
-      .then((res) => {
-        setVideos(res.data.allVideo);
-      });
+    axios.get(`${config.APP_API}/video/all-video-no-topic`).then((res) => {
+      setVideos(
+        res.data.allVideo?.map((item, idx) => ({ ...item, idx: idx + 1 }))
+      );
+    });
   }, [reload]);
 
   const toast = useRef(null);
@@ -187,7 +187,7 @@ const TableVideo = ({
             detail: "Bạn đã xóa video thành công",
             life: 3000,
           });
-          setReload(!reload)
+          setReload(!reload);
         }
       });
   };
@@ -232,23 +232,24 @@ const TableVideo = ({
             onPage={onCustomPage1}
           >
             <Column
-              key="stt"
-              field="stt"
+              key="idx"
+              field="idx"
               header="STT"
               style={{ minWidth: "" }}
-              body={(_, options) => options.rowIndex + 1}
+              sortable
             />
             <Column
               key="content"
               field="content"
               header="Nội dung"
-              style={{ minWidth: "" }}
+              style={{ minWidth: "400px" }}
             />
             <Column
               key="numberTopic"
               field="numberTopic"
               header="Số chủ đề"
-              style={{ minWidth: "" }}
+              style={{ minWidth: "100px" }}
+              sortable
             />
             <Column
               key="nameTopic"
@@ -279,7 +280,6 @@ const TableVideo = ({
         </div>
       </div>
       <div className="p-col-1"></div>
-
     </div>
   );
 };
