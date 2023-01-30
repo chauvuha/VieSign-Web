@@ -11,7 +11,6 @@ import config from "../../../../config";
 
 const FormVideo = ({ amountTopic, rowData }) => {
   const toast = useRef(null);
-
   const filterOption = (number, name) => {
     if (name === "part") {
       for (let item of numberPart) {
@@ -43,16 +42,16 @@ const FormVideo = ({ amountTopic, rowData }) => {
   ];
 
   const defaultValues = {
-    content: rowData.content !== undefined ? rowData.content : "",
-    url: rowData.url !== undefined ? rowData.url : "",
-    numberTopic: rowData.numberTopic !== undefined ? rowData.numberTopic : 1,
-    nameTopic: rowData.nameTopic !== undefined ? rowData.nameTopic : "",
+    content: rowData?.content !== undefined ? rowData.content : "",
+    url: rowData?.url !== undefined ? rowData.url : "",
+    numberTopic: rowData?.numberTopic !== undefined ? rowData.numberTopic : 1,
+    nameTopic: rowData?.nameTopic !== undefined ? rowData.nameTopic : "",
     numberPart:
-      rowData.numberPart !== undefined
+      rowData?.numberPart !== undefined
         ? filterOption(rowData.numberPart, "part")
         : { name: "1", number: 1 },
     type:
-      rowData.type !== undefined
+      rowData?.type !== undefined
         ? filterOption(rowData.type, "type")
         : { name: "Từ vựng", number: 3 },
   };
@@ -83,15 +82,11 @@ const FormVideo = ({ amountTopic, rowData }) => {
       };
 
       axios
-        .post(
-          `${config.APP_API}/video/create-video`,
-          JSON.stringify(info),
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
+        .post(`${config.APP_API}/video/create-video`, JSON.stringify(info), {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
         .then((res) => {
           if (res.status === 200) {
             toast.current.show({
@@ -122,15 +117,11 @@ const FormVideo = ({ amountTopic, rowData }) => {
       };
 
       axios
-        .post(
-          `${config.APP_API}/video/update-video`,
-          JSON.stringify(info),
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
+        .post(`${config.APP_API}/video/update-video`, JSON.stringify(info), {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
         .then((res) => {
           if (res.status === 200) {
             toast.current.show({

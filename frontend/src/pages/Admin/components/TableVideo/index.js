@@ -211,7 +211,7 @@ const TableVideo = ({
 
   //handle add, update, remove
   const handleClickAdd = () => {
-    setRowData({});
+    setRowData(undefined);
     setTableVideoVisible(false);
     setFormVideoVisible(true);
   };
