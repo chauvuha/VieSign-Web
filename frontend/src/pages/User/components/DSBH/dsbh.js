@@ -65,7 +65,7 @@ const DSBH = ({ topics }) => {
                   </div>
 
                   <div className="p-grid ">
-                    <div className="p-col-2">
+                    {/* <div className="p-col-2">
                       <Knob
                         size="70"
                         readOnly
@@ -85,7 +85,7 @@ const DSBH = ({ topics }) => {
 
                     <div className="p-col-5" id="process-user">
                       Số điểm hiện tại
-                    </div>
+                    </div> */}
                     <div className="">
                       <Link to="/hoc" style={{ textDecoration: "none" }}>
                         <Button className="btn-user-learn">Học ngay</Button>
