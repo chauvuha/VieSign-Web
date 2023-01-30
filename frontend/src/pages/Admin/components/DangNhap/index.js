@@ -3,15 +3,15 @@ import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import "primereact/resources/primereact.min.css";
 import "./dangNhap.css";
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { Button } from "primereact/button";
 import { useForm, Controller } from "react-hook-form";
 import { Password } from "primereact/password";
 import { classNames } from "primereact/utils";
 import { InputText } from "primereact/inputtext";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Toast } from "primereact/toast";
+import config from "../../../../config";
 
 function DangNhap({ setUser }) {
   /*Dialog*/
@@ -39,24 +39,47 @@ function DangNhap({ setUser }) {
   const showSuccess = () => {
     toast.current.show({
       severity: "success",
-      summary: "Success Message",
-      detail: "Message Content",
+      summary: "Đăng nhập thành công",
       life: 3000,
     });
   };
   const showError = () => {
     toast.current.show({
       severity: "error",
-      summary: "Error Message",
-      detail: "Message Content",
+      summary: "Đăng nhập thất bại",
       life: 3000,
     });
   };
-  const navigate = useNavigate();
   const onSubmit = (data) => {
-    if (data.email === "admin" && data.password === "admin") {
-      setUser({ email: "admin", password: "admin" });
-    }
+    axios
+      .post(`${config.APP_API}/user/login`, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          axios
+            .get(`${config.APP_API}/user/get-user-id`, {
+              params: { id: res?.data?.userId },
+            })
+            .then((resUser) => {
+              if (resUser?.data?.user?.role === 4) {
+                setUser(resUser.data.user);
+                showSuccess();
+              } else {
+                showError();
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        showError();
+      });
     reset();
   };
 

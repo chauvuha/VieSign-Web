@@ -1,6 +1,5 @@
 import "./admin.css";
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "./components/Header";
 import DangNhap from "./components/DangNhap";
@@ -12,7 +11,6 @@ import TableQuestion from "./components/TableQuestion";
 import FormQuestion from "./components/FormQuestion";
 
 function TaiKhoanAdmin() {
-  const navigate = useNavigate();
   const [amountTopic, setAmountTopic] = useState(0);
   const [topics, setTopics] = useState([]);
   const [user, setUser] = useState({});
@@ -32,7 +30,7 @@ function TaiKhoanAdmin() {
 
   return (
     <>
-      {user?.email === "admin" ? (
+      {user?.role === 4 ? (
         <div style={{minHeight: 800}}>
           <Header
             setTableVideoVisible={setTableVideoVisible}
