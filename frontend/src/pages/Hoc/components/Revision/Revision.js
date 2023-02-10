@@ -4,18 +4,13 @@ import "primeflex/primeflex.css";
 import "primereact/resources/primereact.min.css";
 import { Button } from "primereact/button";
 import "../../tracNghiem.css";
-import { Card } from "primereact/card";
-import { useEffect, useState } from "react";
-import { VirtualScroller } from "primereact/virtualscroller";
+import { useEffect, useState, Suspense } from "react";
 import { classNames } from "primereact/utils";
 import { Dialog } from "primereact/dialog";
 import axios from "axios";
-import TextVideo from "../TextVideo/textVideo";
-import VideoText from "../VideoText/videoText";
-import VideoVideo from "../VideoVideo/videoVideo";
-import { allTopic } from "../../../../constants/constants";
 import { getShuffledArr } from "../../../../helper/getSuffledArr";
 import config from "../../../../config";
+import Question from "./Question";
 
 const Revision = ({ topic, nameTopic, setPart, part, amount }) => {
   // Dialog
@@ -27,84 +22,89 @@ const Revision = ({ topic, nameTopic, setPart, part, amount }) => {
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [questionVid, setQuestionVid] = useState([]);
   const [user, setUser] = useState({});
+  const [allTopic, setAllTopic] = useState([]);
+  const [listQuestion, setListQuestion] = useState([]);
 
-  const listQuestion = allTopic
-    .find((item) => item.topic === topic)
-    .listQuestion.map((item) => item.question);
   useEffect(() => {
-    axios
-      .get(`${config.APP_API}/video/all-video`, {
-        params: {
-          numberTopic: topic,
-        },
-      })
-      .then((res) => {
-        setVideos(res.data.allVideo);
-        const listVid = res.data.allVideo.slice(0, amount);
+    if (allTopic?.length > 0) {
+      axios
+        .get(`${config.APP_API}/video/all-video`, {
+          params: {
+            numberTopic: topic,
+          },
+        })
+        .then((res) => {
+          setVideos(res.data.allVideo);
+          const listVid = res.data.allVideo.slice(0, amount);
+          if (allTopic?.find((item) => item.topic === topic) !== undefined) {
+            let arr = listVid.map((item, index) => {
+              const arrAnswer = [
+                {
+                  url: item.url,
+                  content: item.content,
+                  isCorrect: -1,
+                },
+                {
+                  url: listVid[index === listVid.length - 1 ? 0 : index + 1]
+                    .url,
+                  content:
+                    listVid[index === listVid.length - 1 ? 0 : index + 1]
+                      .content,
+                  isCorrect: -1,
+                },
+              ];
 
-        let arr = listVid.map((item, index) => {
-          const arrAnswer = [
-            {
-              url: item.url,
-              content: item.content,
-              isCorrect: -1,
-            },
-            {
-              url: listVid[index === listVid.length - 1 ? 0 : index + 1].url,
-              content:
-                listVid[index === listVid.length - 1 ? 0 : index + 1].content,
-              isCorrect: -1,
-            },
-          ];
+              const suffledArr = getShuffledArr(arrAnswer);
 
-          const suffledArr = getShuffledArr(arrAnswer);
+              return {
+                disabled: true,
+                url: item.url,
+                content: item.content,
+                type: Math.floor(Math.random() * 3),
+                answer: suffledArr,
+              };
+            });
 
-          return {
-            disabled: true,
-            url: item.url,
-            content: item.content,
-            type: Math.floor(Math.random() * 3),
-            answer: suffledArr,
-          };
-        });
+            arr[0].disabled = false;
+            setQuestionStatus(arr);
 
-        arr[0].disabled = false;
-        setQuestionStatus(arr);
+            const arr2 = listVid.map((item) => {
+              let listContent = [];
+              let wrongContent = "";
+              for (let value of allTopic.find((item) => item.topic === topic)
+                .listQuestion) {
+                if (value.question === item.content) {
+                  listContent = value.answer;
+                } else {
+                  wrongContent = value.answer[0];
+                }
+              }
 
-        const arr2 = listVid.map((item) => {
-          let listContent = [];
-          let wrongContent = "";
-          for (let value of allTopic.find((item) => item.topic === topic).listQuestion) {
-            if (value.question === item.content) {
-              listContent = value.answer;
-            } else {
-              wrongContent = value.answer[0];
-            }
+              const arrAnswer2 = [
+                {
+                  content:
+                    listContent[Math.floor(Math.random() * listContent.length)],
+                  isCorrect: -1,
+                },
+                {
+                  content: wrongContent,
+                  isCorrect: -1,
+                },
+              ];
+
+              const suffledArr2 = getShuffledArr(arrAnswer2);
+
+              return {
+                url: item.url,
+                content: item.content,
+                answer: suffledArr2,
+              };
+            });
+
+            setQuestionVid(arr2);
           }
-
-          const arrAnswer2 = [
-            {
-              content:
-                listContent[Math.floor(Math.random() * listContent.length)],
-              isCorrect: -1,
-            },
-            {
-              content: wrongContent,
-              isCorrect: -1,
-            },
-          ];
-
-          const suffledArr2 = getShuffledArr(arrAnswer2);
-
-          return {
-            url: item.url,
-            content: item.content,
-            answer: suffledArr2,
-          };
         });
-
-        setQuestionVid(arr2);
-      });
+    }
 
     axios
       .get(`${config.APP_API}/user/get-user-id`, {
@@ -116,9 +116,9 @@ const Revision = ({ topic, nameTopic, setPart, part, amount }) => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [allTopic, amount, topic]);
 
-  //Thanh scroll on the right
+  // Thanh scroll on the right
   const handleClickQuestion = (index) => {
     setCurrentQuestion(index);
   };
@@ -377,64 +377,29 @@ const Revision = ({ topic, nameTopic, setPart, part, amount }) => {
         <p>2. Chọn video đúng với từ vựng</p>
         <p>3. Chọn video đúng với video</p>
       </Dialog>
-      {visible && (
-        <div className="tracnghiem-body p-grid">
-          <div className="p-col-0 p-sm-2"></div>
-          <div className="learn-card p-col-12 p-sm-6">
-            <Card footer={footer}>
-              {questionStatus[currentQuestion - 1].type === 0 && (
-                <TextVideo
-                  answer={questionStatus[currentQuestion - 1].answer}
-                  setAnswerLeft={setAnswerLeft}
-                  setAnswerRight={setAnswerRight}
-                  content={videos[currentQuestion - 1].content}
-                />
-              )}
-              {questionStatus[currentQuestion - 1].type === 1 && (
-                <VideoText
-                  answer={questionStatus[currentQuestion - 1].answer}
-                  setAnswerLeft={setAnswerLeft}
-                  setAnswerRight={setAnswerRight}
-                  url={videos[currentQuestion - 1].url}
-                />
-              )}
-              {questionStatus[currentQuestion - 1].type === 2 &&
-                listQuestion.includes(videos[currentQuestion - 1].content) && (
-                  <VideoVideo
-                    answer={questionVid[currentQuestion - 1].answer}
-                    setAnswerLeft={setAnswerLeftVideo}
-                    setAnswerRight={setAnswerRightVideo}
-                    url={videos[currentQuestion - 1].url}
-                    videos={videos}
-                  />
-                )}
-              {questionStatus[currentQuestion - 1].type === 2 &&
-                !listQuestion.includes(videos[currentQuestion - 1].content) && (
-                  <VideoText
-                    answer={questionStatus[currentQuestion - 1].answer}
-                    setAnswerLeft={setAnswerLeft}
-                    setAnswerRight={setAnswerRight}
-                    url={videos[currentQuestion - 1].url}
-                  />
-                )}
-            </Card>
-          </div>
-          <div className="learn-card-sidebar p-col-12 p-sm-3">
-            <Card>
-              <div className="learn-card-sidebar-header">
-                <h2>Chủ đề {topic}</h2>
-                <h3>{nameTopic}</h3>
-              </div>
-              <VirtualScroller
-                items={basicItems}
-                itemSize={50}
-                itemTemplate={basicItemTemplate}
-              />
-            </Card>
-          </div>
-          <div className="p-col-0 p-sm-1"></div>
-        </div>
-      )}
+      <Suspense fallback={<div>Loading ...</div>}>
+        <Question
+          topic={topic}
+          footer={footer}
+          questionStatus={questionStatus}
+          currentQuestion={currentQuestion}
+          setAnswerLeft={setAnswerLeft}
+          setAnswerRight={setAnswerRight}
+          videos={videos}
+          basicItems={basicItems}
+          basicItemTemplate={basicItemTemplate}
+          visible={visible}
+          nameTopic={nameTopic}
+          questionVid={questionVid}
+          setAnswerLeftVideo={setAnswerLeftVideo}
+          setAnswerRightVideo={setAnswerRightVideo}
+          allTopic={allTopic}
+          setAllTopic={setAllTopic}
+          listQuestion={listQuestion}
+          setListQuestion={setListQuestion}
+        />
+      </Suspense>
+
       <Dialog
         header="Thông báo"
         visible={displayNextPart}
