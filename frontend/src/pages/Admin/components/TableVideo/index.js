@@ -1,6 +1,7 @@
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Ripple } from "primereact/ripple";
+import { FilterMatchMode } from "primereact/api";
 import { Dropdown } from "primereact/dropdown";
 import { InputText } from "primereact/inputtext";
 import { classNames } from "primereact/utils";
@@ -22,6 +23,10 @@ const TableVideo = ({
     "Press 'Enter' key to go to this page."
   );
   const [reload, setReload] = useState(false);
+  const [globalFilterValue, setGlobalFilterValue] = useState("");
+  const [filters, setFilters] = useState({
+    global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+  });
 
   useEffect(() => {
     axios.get(`${config.APP_API}/video/all-video-no-topic`).then((res) => {
@@ -33,6 +38,14 @@ const TableVideo = ({
 
   const toast = useRef(null);
 
+  const onGlobalFilterChange = (e) => {
+    const value = e.target.value;
+    let _filters = { ...filters };
+    _filters["global"].value = value;
+    setFilters(_filters);
+    setGlobalFilterValue(value);
+  };
+
   const renderHeader = () => {
     return (
       <div
@@ -40,6 +53,14 @@ const TableVideo = ({
         style={{ paddingRight: "10rem" }}
       >
         <h5 className="p-m-1">Danh sách video</h5>
+        <span className="p-input-icon-left">
+          <i className="pi pi-search" />
+          <InputText
+            value={globalFilterValue}
+            onChange={onGlobalFilterChange}
+            placeholder="Tìm kiếm"
+          />
+        </span>
         <span className="p-input-icon-left" onClick={handleClickAdd}>
           <i
             className="pi pi-plus-circle"
@@ -227,9 +248,12 @@ const TableVideo = ({
             value={videos}
             paginator
             paginatorTemplate={template1}
+            filters={filters}
             first={first1}
             rows={rows1}
             onPage={onCustomPage1}
+            globalFilterFields={["content"]}
+            emptyMessage="No video found."
           >
             <Column
               key="idx"
