@@ -12,6 +12,7 @@ router.get('/video/list-video',videoCtrl.getListVideo);
 router.get('/video/all-video',videoCtrl.getAllVideo);
 router.get("/video/all-video-no-topic", videoCtrl.getAllVideoNoTopic);
 router.get("/video/get-list-video-by-topic", videoCtrl.getListVideoByTopic);
+router.get("/video/get-list-video-by-number-topic", videoCtrl.getListVideoByNumberTopic);
 router.post("/video/update-video", videoCtrl.updateVideo);
 router.post("/video/delete-video", videoCtrl.deleteVideo);
 

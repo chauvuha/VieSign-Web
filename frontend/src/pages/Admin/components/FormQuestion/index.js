@@ -1,5 +1,5 @@
 import { Button } from "primereact/button";
-import { useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Card } from "primereact/card";
 import { Toast } from "primereact/toast";
@@ -9,6 +9,11 @@ import config from "../../../../config";
 import FieldArray from "./FieldArray";
 
 const FormQuestion = ({ topics, rowData }) => {
+  const [videoByTopic, setVideoByTopic] = useState([]);
+  const [listVideoSelected, setListVideoSelected] = useState([
+    rowData?.listQuestion?.map((item) => item?.question),
+  ]);
+  const [topic, setTopic] = useState(rowData?.topic);
   const toast = useRef(null);
 
   const defaultValues =
@@ -32,10 +37,34 @@ const FormQuestion = ({ topics, rowData }) => {
     control,
     handleSubmit,
     register,
-    getValues,
-    errors,
-    setValue,
+    watch,
   } = useForm({ defaultValues });
+
+  const watchAllFields = watch();
+
+  useEffect(() => {
+    if (
+      JSON.stringify(
+        watchAllFields?.listQuestion?.map((item) => item?.question)
+      ) !== JSON.stringify(listVideoSelected)
+    ) {
+      setListVideoSelected(
+        watchAllFields?.listQuestion?.map((item) => item?.question)
+      );
+    }
+  }, [listVideoSelected, watchAllFields]);
+
+  useEffect(() => {
+    axios
+      .get(`${config.APP_API}/video/get-list-video-by-number-topic`, {
+        params: {
+          topic,
+        },
+      })
+      .then((res) => {
+        setVideoByTopic(res.data.listVideo);
+      });
+  }, [topic]);
 
   const onSubmit = (data) => {
     if (rowData === undefined || Object.keys(rowData).length === 0) {
@@ -140,6 +169,7 @@ const FormQuestion = ({ topics, rowData }) => {
                           placeholder="Chọn chủ đề"
                           onChange={(e) => {
                             field.onChange(e.value);
+                            setTopic(e.value);
                           }}
                         />
                       )}
@@ -151,10 +181,8 @@ const FormQuestion = ({ topics, rowData }) => {
                   {...{
                     control,
                     register,
-                    defaultValues,
-                    getValues,
-                    setValue,
-                    errors,
+                    videoByTopic,
+                    listVideoSelected,
                   }}
                 />
                 <Button

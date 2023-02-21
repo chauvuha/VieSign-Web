@@ -7,7 +7,7 @@ exports.createVideo = (req, res, next) => {
     numberTopic: req.body.numberTopic,
     nameTopic: req.body.nameTopic,
     numberPart: req.body.numberPart,
-    type: req.body.type
+    type: req.body.type,
   });
 
   video
@@ -101,7 +101,7 @@ exports.getAllVideo = (req, res, next) => {
         numberTopic: item.numberTopic,
         url: item.url,
         content: item.content,
-        type: item.type
+        type: item.type,
       };
     });
     const arr2 = arr.filter(
@@ -137,13 +137,22 @@ exports.getListVideoByTopic = (req, res, next) => {
     const arr2 = arr.filter(
       (item) => item.numberTopic <= parseInt(req.query.numberTopic)
     );
-    
+
     res.status(200).json({
       message: "get list video by topic successfully",
       listVideo: arr2,
     });
   });
-}
+};
+
+exports.getListVideoByNumberTopic = (req, res, next) => {
+  Video.find({ numberTopic: req.query.topic }).then((videos) => {
+    res.status(200).json({
+      message: "get list video by number topic successfully",
+      listVideo: videos,
+    });
+  });
+};
 
 //Admin
 exports.updateVideo = (req, res, next) => {
@@ -154,7 +163,7 @@ exports.updateVideo = (req, res, next) => {
     numberTopic: req.body.numberTopic,
     nameTopic: req.body.nameTopic,
     numberPart: req.body.numberPart,
-    type: req.body.type
+    type: req.body.type,
   });
 
   Video.updateOne({ _id: req.body._id }, video)

@@ -1,12 +1,18 @@
 import React from "react";
-import { useFieldArray } from "react-hook-form";
+import { useFieldArray, Controller } from "react-hook-form";
 import NestedArray from "./nestedFieldArray";
-import { InputText } from "primereact/inputtext";
+// import { InputText } from "primereact/inputtext";
 import "./styles.css";
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
+import { Dropdown } from "primereact/dropdown";
 
-function FieldArray({ control, register }) {
+function FieldArray({
+  control,
+  register,
+  videoByTopic,
+  listVideoSelected,
+}) {
   const { fields, append, remove } = useFieldArray({
     control,
     name: "listQuestion",
@@ -22,18 +28,45 @@ function FieldArray({ control, register }) {
               style={{ marginTop: "12px", border: "1px solid #000000" }}
             >
               <h5>Câu hỏi {index + 1}</h5>
-              <InputText
-                style={{ width: "95%" }}
-                id={item.name}
-                {...register(`listQuestion[${index}].question`, {})}
-                placeholder="Nhập câu hỏi"
-              />
-              <i
-                className="pi pi-trash"
-                style={{ cursor: "pointer", marginLeft: "10px", color: "red" }}
-                onClick={() => remove(index)}
-              />
-
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <Controller
+                  name={`listQuestion[${index}].question`}
+                  control={control}
+                  render={({ field }) => (
+                    <Dropdown
+                      style={{ width: "95%" }}
+                      value={field.value}
+                      options={videoByTopic
+                        .filter(
+                          (item) =>
+                            !(
+                              listVideoSelected?.includes(item?.content) &&
+                              item?.content !== field.value
+                            )
+                        )
+                        .map((item) => ({
+                          name: item?.content,
+                          value: item?.content,
+                        }))}
+                      optionLabel="name"
+                      onChange={(e) => {
+                        field.onChange(e.value);
+                      }}
+                      placeholder="Chọn câu hỏi"
+                    />
+                  )}
+                />
+                <i
+                  className="pi pi-trash"
+                  style={{
+                    cursor: "pointer",
+                    color: "red",
+                    height: "16px",
+                    margin: "auto 0px auto 10px",
+                  }}
+                  onClick={() => remove(index)}
+                />
+              </div>
               <NestedArray nestIndex={index} {...{ control, register }} />
             </Card>
           );
