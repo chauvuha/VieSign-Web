@@ -33,6 +33,8 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
   const [questionStatus, setQuestionStatus] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [listAnswer, setListAnswer] = useState([]);
+  const [closable, setClosable] = useState(false);
+
   const randQuestion = useRef();
   const randNumber = useRef(getRandomInt(2));
 
@@ -221,6 +223,7 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
       };
     }
     setListAnswer(arr);
+    setClosable(true);
   };
 
   const setAnswerRight = () => {
@@ -237,6 +240,7 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
       };
     }
     setListAnswer(arr);
+    setClosable(true);
   };
 
   return (
@@ -268,6 +272,7 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
         style={{ width: "40vw" }}
         footer={null}
         onHide={() => onHide("displayQuickQuestion")}
+        closable={closable}
       >
         {randNumber.current === 0 ? (
           <TextVideo
