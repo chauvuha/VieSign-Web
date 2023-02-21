@@ -7,12 +7,7 @@ import { Button } from "primereact/button";
 import { Card } from "primereact/card";
 import { Dropdown } from "primereact/dropdown";
 
-function FieldArray({
-  control,
-  register,
-  videoByTopic,
-  listVideoSelected,
-}) {
+function FieldArray({ control, register, videoByTopic, listVideoSelected }) {
   const { fields, append, remove } = useFieldArray({
     control,
     name: "listQuestion",
@@ -27,7 +22,7 @@ function FieldArray({
               key={item.id}
               style={{ marginTop: "12px", border: "1px solid #000000" }}
             >
-              <h5>Câu hỏi {index + 1}</h5>
+              <h5 style={{ paddingRight: 70 }}>Câu hỏi {index + 1}</h5>
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <Controller
                   name={`listQuestion[${index}].question`}
@@ -67,19 +62,24 @@ function FieldArray({
                   onClick={() => remove(index)}
                 />
               </div>
-              <NestedArray nestIndex={index} {...{ control, register }} />
+              <NestedArray
+                nestIndex={index}
+                {...{ control, register }}
+                videoByTopic={videoByTopic}
+              />
             </Card>
           );
         })}
       </div>
-
-      <Button
-        label="Thêm câu hỏi"
-        style={{ width: "200px", marginTop: "12px" }}
-        onClick={() => {
-          append({ question: "", answers: [] });
-        }}
-      />
+      <div style={{ paddingRight: 70 }}>
+        <Button
+          label="Thêm câu hỏi"
+          style={{ width: "200px", marginTop: "12px"}}
+          onClick={() => {
+            append({ question: "", answers: [] });
+          }}
+        />
+      </div>
     </>
   );
 }

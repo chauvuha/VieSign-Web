@@ -1,9 +1,12 @@
 import React from "react";
-import { useFieldArray } from "react-hook-form";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
+import { useFieldArray, Controller } from "react-hook-form";
+// import { InputText } from "primereact/inputtext";
+import { Dropdown } from "primereact/dropdown";
+import "./styles.css";
 
-function NestedFieldArray({ nestIndex, control, register }) {
+function NestedFieldArray({ nestIndex, control, videoByTopic }) {
   const { fields, remove, append } = useFieldArray({
     control,
     name: `listQuestion[${nestIndex}].answers`,
@@ -11,36 +14,62 @@ function NestedFieldArray({ nestIndex, control, register }) {
 
   return (
     <div className="dynamic-form-question">
-      <h5>Câu trả lời</h5>
-      {fields.map((item, k) => {
+      <h5 style={{ paddingRight: 70 }}>Câu trả lời</h5>
+
+      {fields.map((_, k) => {
         return (
-          <div key={item.id} style={{ marginBottom: "8px" }}>
-            <InputText
-              style={{ width: "95%" }}
-              id={item.name}
-              {...register(`listQuestion[${nestIndex}].answers[${k}].answer`, {
-                required: true,
-              })}
-              placeholder="Nhập câu trả lời"
+          <div
+            key={k}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              paddingBottom: 10,
+            }}
+          >
+            <Controller
+              name={`listQuestion[${nestIndex}].answers[${k}].answer]`}
+              control={control}
+              render={({ field }) => (
+                <Dropdown
+                  style={{ width: "95%" }}
+                  value={field.value}
+                  options={videoByTopic.map((item) => ({
+                    name: item?.content,
+                    value: item?.content,
+                  }))}
+                  optionLabel="name"
+                  onChange={(e) => {
+                    field.onChange(e.value);
+                  }}
+                  placeholder="Chọn câu trả lời"
+                />
+              )}
             />
             <i
               className="pi pi-trash"
-              style={{ cursor: "pointer", marginLeft: "10px", color: "red" }}
+              style={{
+                cursor: "pointer",
+                color: "red",
+                height: "16px",
+                margin: "auto 0px auto 10px",
+              }}
               onClick={() => remove(k)}
             />
           </div>
         );
       })}
 
-      <Button
-        label="Thêm câu trả lời"
-        style={{ width: "200px" }}
-        onClick={() =>
-          append({
-            answer: "",
-          })
-        }
-      />
+      <div style={{ paddingRight: 70 }}>
+        <Button
+          label="Thêm câu trả lời"
+          style={{ width: "200px" }}
+          onClick={() =>
+            append({
+              answer: "",
+            })
+          }
+        />
+      </div>
     </div>
   );
 }
