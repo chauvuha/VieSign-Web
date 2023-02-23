@@ -124,6 +124,7 @@ function DangNhap({ setUser }) {
                       render={({ field, fieldState }) => (
                         <Password
                           id={field.name}
+                          feedback={false}
                           {...field}
                           toggleMask
                           className={classNames({

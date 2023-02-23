@@ -65,13 +65,11 @@ function Header({
 
   const start = (
     <div className="btn-logo">
-      <Link to="/admin" style={{ textDecoration: "none" }}>
         <Button
           className="p-button-text p-button-plain"
           label="Viesign"
           id="btn-home"
-        ></Button>
-      </Link>
+        />
     </div>
   );
 

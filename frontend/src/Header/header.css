@@ -32,6 +32,11 @@
 #btn-home {
   padding: 6px 12px !important;
 }
+#btn-home:hover {
+  cursor: default;
+  background-color: white;
+  color: #026670;
+}
 
 .dropdown-menu.show {
   padding: 7px;

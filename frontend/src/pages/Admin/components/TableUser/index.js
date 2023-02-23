@@ -149,7 +149,7 @@ const TableUser = () => {
     } else {
       return <>Người bình thường</>;
     }
-  }
+  };
 
   return (
     <div className="p-grid ">
@@ -157,7 +157,6 @@ const TableUser = () => {
       <div className="p-col-10">
         <div className="card " rows={10}>
           <DataTable
-
             header="Danh sách người dùng"
             value={users}
             paginator
@@ -227,6 +226,10 @@ const TableUser = () => {
               field="topic"
               header="Chủ đề học hiện tại"
               style={{ minWidth: "" }}
+              body={(dataRow) => {
+                let lastTopic = Math.max(...dataRow.topic);
+                return <>{lastTopic}</>;
+              }}
             />
             <Column
               key="part"
