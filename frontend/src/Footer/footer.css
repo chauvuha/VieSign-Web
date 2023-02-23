@@ -19,9 +19,8 @@
   color: #026670;
   padding: 6px 20px !important;
   text-align: center;
-  border: transparent
+  border: transparent;
 }
-
 
 #footer div.p-text-normal.p-text-left {
   color: #fff;
@@ -31,13 +30,13 @@
   background-color: #fce181;
   color: #026670;
   padding: 8px;
-  border: 2px solid #fce181 
+  border: 2px solid #fce181;
 }
 
 #footer button.p-button.p-component:hover {
-  background-color: #026670  ;
+  background-color: #026670;
   border: 2px solid #fce181;
-  color: #fce181 
+  color: #fce181;
 }
 
 @media screen and (max-width: 926px) {

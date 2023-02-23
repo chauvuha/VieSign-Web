@@ -34,9 +34,23 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [listAnswer, setListAnswer] = useState([]);
   const [closable, setClosable] = useState(false);
+  const [user, setUser] = useState({});
 
   const randQuestion = useRef();
   const randNumber = useRef(getRandomInt(2));
+
+  useEffect(() => {
+    axios
+      .get(`${config.APP_API}/user/get-user-id`, {
+        params: { id: JSON.parse(window.localStorage.getItem("id")) },
+      })
+      .then((res) => {
+        setUser(res.data.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   useEffect(() => {
     axios
@@ -178,22 +192,22 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
       setQuestionStatus(arr);
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      // const listTopic = [...new Set([...user.topic, topic])];
-      // const info = {
-      //   _id: JSON.parse(window.localStorage.getItem("id")),
-      //   topic: listTopic,
-      //   part: user.part <= part ? part + 1 : user.part,
-      // };
+      const listTopic = [...new Set([...user.topic, topic])];
+      const info = {
+        _id: JSON.parse(window.localStorage.getItem("id")),
+        topic: listTopic,
+        part: user.part <= part ? part + 1 : user.part,
+      };
 
-      // axios
-      //   .post(`${config.APP_API}/user/update-user`, JSON.stringify(info), {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //   })
-      //   .then((res) => {
-      //     console.log(res);
-      //   });
+      axios
+        .post(`${config.APP_API}/user/update-user`, JSON.stringify(info), {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          console.log(res);
+        });
       setDisplayNextPart(true);
     }
   };
@@ -271,7 +285,10 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
         visible={displayQuickQuestion}
         style={{ width: "40vw" }}
         footer={null}
-        onHide={() => onHide("displayQuickQuestion")}
+        onHide={() => {
+          onHide("displayQuickQuestion");
+          setClosable(false);
+        }}
         closable={closable}
       >
         {randNumber.current === 0 ? (

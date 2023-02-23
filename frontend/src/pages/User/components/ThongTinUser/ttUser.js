@@ -62,8 +62,7 @@ function TTUser({ user }) {
       username: `${hotenlot} ${ten}`,
       password: data.password !== "" ? data.password : user.password,
       email: user.email,
-      date:
-        data.date !== "" ? moment(data.date).format("DD-MM-YYYY") : user.dob,
+      dob: data.date !== "" ? moment(data.date).format("DD-MM-YYYY") : user.dob,
       country: data.country !== "" ? data.country : user.country,
       address: data.address !== "" ? data.address : user.address,
       city: data.city !== "" ? data.city : user.city,

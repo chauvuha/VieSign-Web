@@ -99,7 +99,7 @@ exports.getUserById = (req, res, next) => {
 exports.updateUser = (req, res, next) => {
   if (req.body.password !== undefined) {
     bcrypt.hash(req.body.password, 10).then((hash) => {
-      const user = new User({
+      const user = {
         _id: req.body._id,
         username: req.body.username,
         password: hash,
@@ -114,7 +114,7 @@ exports.updateUser = (req, res, next) => {
         score: req.body.score,
         topic: req.body.topic,
         part: req.body.part,
-      });
+      };
 
       User.updateOne({ _id: req.body._id }, user)
         .then(() => {
@@ -127,7 +127,7 @@ exports.updateUser = (req, res, next) => {
         });
     });
   } else {
-    const user = new User({
+    const user = {
       _id: req.body._id,
       username: req.body.username,
       email: req.body.email,
@@ -141,7 +141,9 @@ exports.updateUser = (req, res, next) => {
       score: req.body.score,
       topic: req.body.topic,
       part: req.body.part,
-    });
+    };
+
+
     User.updateOne({ _id: req.body._id }, user)
       .then(() => {
         res.status(200).json({
