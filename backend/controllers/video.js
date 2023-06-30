@@ -86,7 +86,6 @@ exports.getListVideo = (req, res, next) => {
     const arr3 = arr2.filter(
       (item) => item.numberPart === parseInt(req.query.numberPart)
     );
-    console.log(arr3);
     res.status(200).json({
       message: "get list video successfully",
       listVideo: arr3,
@@ -107,7 +106,6 @@ exports.getAllVideo = (req, res, next) => {
     const arr2 = arr.filter(
       (item) => item.numberTopic === parseInt(req.query.numberTopic)
     );
-    console.log(arr2);
     res.status(200).json({
       message: "get all video successfully",
       allVideo: arr2,

@@ -153,10 +153,14 @@ function TroChoi2_1({ topic, amount }) {
           {amount}0 điểm!
         </p>
       </Dialog>
+
       <div
-        className={width >= 1536 || width <= 1155 ? "p-col-0 p-sm-1" : "p-col-0 p-sm-3"}
-      ></div>
-      <div className={width >= 1536 || width <= 1155 ? "p-col-12 p-sm-10" : "p-col-12 p-sm-7"}>
+        className={
+          width >= 1536 || width <= 1155
+            ? "p-col-12 p-sm-10"
+            : "p-col-12 p-sm-10"
+        }
+      >
         <div className="p-grid" id="content-game2">
           <div className="p-col-7">
             <div className="p-grid point-game2">
@@ -167,7 +171,7 @@ function TroChoi2_1({ topic, amount }) {
           <div className="p-col-5 p-text-right time-game2">
             <div className="timer-wrapper">
               <CountdownCircleTimer
-                isPlaying
+                // isPlaying
                 duration={amount * 30}
                 colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
                 size={80}
@@ -180,7 +184,7 @@ function TroChoi2_1({ topic, amount }) {
           </div>
         </div>
         {visible && (
-          <div>
+          <div id="cards">
             <FlipGameContainers
               cards={data}
               setScore={setScore}
@@ -191,7 +195,6 @@ function TroChoi2_1({ topic, amount }) {
           </div>
         )}
       </div>
-      <div className="p-col-0 p-sm-1"></div>
     </div>
   );
 }

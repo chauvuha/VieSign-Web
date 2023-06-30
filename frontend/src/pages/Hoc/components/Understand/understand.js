@@ -273,11 +273,16 @@ const Understand = ({ topic, nameTopic, setPart, part }) => {
         visible={displayBasic}
         style={{ width: "50vw" }}
         footer={renderFooter("displayBasic")}
-        onHide={() => onHide("displayBasic")}
+        onHide={() => {
+          setPart(-1);
+          onHide("displayBasic");
+        }}
       >
         <p>Trong phần ôn tập này, các bạn sẽ ôn lại những phần sau:</p>
-        <p>1. 8 từ vựng thể hiện cảm xúc</p>
-        <p>2. Bài tập đan xen ôn tập 8 từ vựng</p>
+        <p>
+          1. {videos.length} từ vựng về {nameTopic}
+        </p>
+        <p>2. Bài tập đan xen ôn tập {videos.length} từ vựng</p>
       </Dialog>
 
       <Dialog

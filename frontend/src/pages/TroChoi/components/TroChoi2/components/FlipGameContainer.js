@@ -173,7 +173,7 @@ const FlipGameContainers = ({ cards, setScore, timesUp, score, setReload }) => {
 
   return (
     <>
-      <div >{generateCards()}</div>
+      <div>{generateCards()}</div>
       <Dialog
         visible={displayBasic}
         style={{ width: "50vw" }}
@@ -182,6 +182,7 @@ const FlipGameContainers = ({ cards, setScore, timesUp, score, setReload }) => {
       >
         <div className="congra-img">
           <img
+            alt="card"
             src={
               require("../../../../../assets/images/congratulations.png")
                 .default
