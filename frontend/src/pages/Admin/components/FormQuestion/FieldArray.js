@@ -74,8 +74,9 @@ function FieldArray({ control, register, videoByTopic, listVideoSelected }) {
       <div style={{ paddingRight: 70 }}>
         <Button
           label="Thêm câu hỏi"
-          style={{ width: "200px", marginTop: "12px"}}
-          onClick={() => {
+          style={{ width: "200px", marginTop: "12px" }}
+          onClick={(event) => {
+            event.preventDefault();
             append({ question: "", answers: [] });
           }}
         />
