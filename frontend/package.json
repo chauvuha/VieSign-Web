@@ -60,6 +60,10 @@
     ]
   },
   "devDependencies": {
-    "react-refresh": "^0.14.0"
+    "react-refresh": "^0.14.0",
+    "react-error-overlay": "6.0.9"
+  },
+  "resolutions": {
+    "react-error-overlay": "6.0.9"
   }
 }

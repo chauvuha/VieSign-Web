@@ -63,11 +63,12 @@ function NestedFieldArray({ nestIndex, control, videoByTopic }) {
         <Button
           label="Thêm câu trả lời"
           style={{ width: "200px" }}
-          onClick={() =>
+          onClick={(event) => {
+            event.preventDefault();
             append({
               answer: "",
-            })
-          }
+            });
+          }}
         />
       </div>
     </div>

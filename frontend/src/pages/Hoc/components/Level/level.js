@@ -1,16 +1,16 @@
-import "primereact/resources/themes/saga-blue/theme.css";
-import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
-import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
 import { Button } from "primereact/button";
-import "./level.css";
-import { useEffect, useState } from "react";
+import "primereact/resources/primereact.min.css";
+import "primereact/resources/themes/saga-blue/theme.css";
+import { useState } from "react";
+import Revision from "../Revision/Revision";
 import Understand from "../Understand/understand";
-import Revision from "../Revision/Revision"
+import "./level.css";
 
 import React from "react";
 
-const Level = ({ topic, topics, setTopic }) => {
+const Level = ({ topic, topics, setTopic, index }) => {
   const [part, setPart] = useState(-1);
 
   return (
@@ -30,7 +30,7 @@ const Level = ({ topic, topics, setTopic }) => {
             <div className="p-col-12 p-sm-2"></div>
             <div className="p-col-12 p-sm-8">
               <Button className="scroll-item-level-section heading">
-                Chủ đề {topic}: {topics[topic - 1].nameTopic}
+                Chủ đề {index}: {topics[topic - 1].nameTopic}
               </Button>
               <Button
                 className="scroll-item-level-section"

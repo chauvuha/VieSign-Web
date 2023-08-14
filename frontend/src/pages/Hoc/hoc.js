@@ -1,19 +1,16 @@
-import "primereact/resources/themes/saga-blue/theme.css";
-import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
-import "primereact/resources/primereact.min.css";
-import "primereact/resources/primereact.css";
-import "primereact/resources/themes/lara-light-indigo/theme.css";
-import "./hoc.css";
-import { TabView, TabPanel } from "primereact/tabview";
-import React, { Fragment } from "react";
+import "primeicons/primeicons.css";
 import { Button } from "primereact/button";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { Dialog } from "primereact/dialog";
+import "primereact/resources/primereact.css";
+import "primereact/resources/primereact.min.css";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/themes/saga-blue/theme.css";
+import { TabPanel, TabView } from "primereact/tabview";
+import React, { Fragment, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Level from "./components/Level/level";
-import axios from "axios";
-import config from "../../config";
+import "./hoc.css";
 
 function Hoc({ topics }) {
   const [displayBasic, setDisplayBasic] = useState(
@@ -21,24 +18,11 @@ function Hoc({ topics }) {
   );
   const [displayBasic2, setDisplayBasic2] = useState(false);
   const [topic, setTopic] = useState(-1);
+  const [index, setIndex] = useState(0);
 
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`${config.APP_API}/user/get-user-id`, {
-  //       params: { id: JSON.parse(window.localStorage.getItem("id")) },
-  //     })
-  //     .then((res) => {
-  //       if (res.data.user.topic < topic) {
-  //         setDisplayBasic2(true);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, [topic]);
 
   const dialogFuncMap = {
     displayBasic: setDisplayBasic,
@@ -134,7 +118,10 @@ function Hoc({ topics }) {
                       <Fragment key={index}>
                         <button
                           className="learn-section p-col-12 p-sm-2"
-                          onClick={() => setTopic(item?.numberTopic)}
+                          onClick={() => {
+                            setTopic(item?.numberTopic);
+                            setIndex(index + 1);
+                          }}
                         >
                           <img
                             alt="online"
@@ -165,7 +152,10 @@ function Hoc({ topics }) {
                       <Fragment key={index}>
                         <button
                           className="learn-section p-col-12 p-sm-2"
-                          onClick={() => setTopic(item?.numberTopic)}
+                          onClick={() => {
+                            setTopic(item?.numberTopic);
+                            setIndex(index + 1);
+                          }}
                         >
                           <img
                             alt="online"
@@ -196,7 +186,10 @@ function Hoc({ topics }) {
                       <Fragment key={index}>
                         <button
                           className="learn-section p-col-12 p-sm-2"
-                          onClick={() => setTopic(item?.numberTopic)}
+                          onClick={() => {
+                            setTopic(item?.numberTopic);
+                            setIndex(index + 1);
+                          }}
                         >
                           <img
                             alt="online"
@@ -223,7 +216,12 @@ function Hoc({ topics }) {
       )}
       {topic !== -1 && (
         <>
-          <Level topic={topic} topics={topics} setTopic={setTopic} />
+          <Level
+            topic={topic}
+            topics={topics}
+            setTopic={setTopic}
+            index={index}
+          />
         </>
       )}
       <>
