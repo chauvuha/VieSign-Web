@@ -15,7 +15,7 @@ function TrangChu() {
   return (
     <div className="main-body">
       <div className="main-first-top-picture p-grid">
-        <img alt="img" className="p-col-12 p-sm-12" src={require('../../assets/images/banner.jpg').default} />
+        <img alt="img" className="p-col-12 p-sm-12" src={require('../../assets/images/banner2.png').default} />
       </div>
       <div className="main-first-section vnmese p-grid cl-darkgreen bg-yellow pb-40">
         <div className="p-col-2"></div>
