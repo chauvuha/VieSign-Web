@@ -4,6 +4,8 @@ I co-founded, designed, and built the first and only Vietnamese Sign Language (V
 
 This repository is the **demo public version** of VieSign, with our backend running on **MongoDB** and **Node.js**, and frontend running on **ReactJS**. The live website is currently being used by thousands of deaf people, their families, VSL enthusiasts, nurses, or doctors. 
 
+![viesign-mockup](https://github.com/user-attachments/assets/0a579d19-d278-4f69-82fa-abf40e019f4a)
+
 
 ## Prerequisites
 
