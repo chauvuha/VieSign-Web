@@ -1,8 +1,11 @@
 # mooc_site
 # Prerequisites
 MongoDB v5.0.4
+
 Npm v8.1.0
+
 Node v16.13.0
+
 MongoDB compass
 
 # Run backend
