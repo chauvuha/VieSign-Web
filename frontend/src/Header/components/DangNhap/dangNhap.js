@@ -198,6 +198,7 @@ function DangNhap() {
                             id={field.name}
                             {...field}
                             toggleMask
+                            feedback={false}
                             className={classNames({
                               "p-invalid": fieldState.invalid,
                             })}
