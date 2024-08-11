@@ -1,6 +1,6 @@
 # VieSign - The first Vietnamese Sign Language (VSL) online learning platform
 
-I co-founded, designed, and built the first and only Vietnamese Sign Language (VSL) learning platform to address the shortage of sign language interpreters and improve sign language education within the Vietnamese healthcare system. This platform was created in collaboration with CED (The Center of Research & Education for the Deaf) and received support from Oxfam and EU grants.
+I, together with Duy Uyen, Kim Ngan, Ngoc Quy, and Uy Tran, co-founded, designed, and built the first and only Vietnamese Sign Language (VSL) learning platform to address the shortage of sign language interpreters and improve sign language education within the Vietnamese healthcare system. This platform was created in collaboration with CED (The Center of Research & Education for the Deaf) and received support from Oxfam and EU grants.
 
 This repository is the **demo public version** of VieSign, with our backend running on **MongoDB** and **Node.js**, and frontend running on **ReactJS**. The live website is currently being used by thousands of deaf people, their families, VSL enthusiasts, nurses, or doctors. 
 
